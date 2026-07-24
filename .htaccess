@@ -65,22 +65,3 @@ DirectoryIndex home.html index.html index.php
 # Disable Directory Browsing (Prevents people from seeing raw file lists in folders)
 # ==============================================================================
 Options -Indexes
-
-#remove.html in URL
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-
-  # 1. Redirect browser from /page.html to /page (301 Permanent Redirect)
-  RewriteCond %{THE_REQUEST} \s/+(.+)\.html[\s?] [NC]
-  RewriteRule ^ %1 [R=301,L]
-
-  # 2. Internally serve /page.html when someone requests /page
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME}\.html -f
-  RewriteRule ^ %{REQUEST_URI}.html [L]
-
-  # 3. Direct root domain requests to home.html
-  RewriteCond %{THE_REQUEST} \s/+(home)\.html[\s?] [NC]
-  RewriteRule ^home\.html$ / [R=301,L]
-</IfModule>
