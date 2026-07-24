@@ -151,23 +151,96 @@
       max-width: 1100px;
     }
 
-    .page-header {
-      margin-bottom: 4rem;
+    /* --- Introduction Section --- */
+    .intro-hero {
+      margin-bottom: 4.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border-color);
     }
 
-    .page-header h1 {
+    .intro-tag {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .intro-hero h1 {
       font-family: var(--font-heading);
       font-size: 3.5rem;
       font-weight: 700;
       letter-spacing: -0.04em;
-      line-height: 1.05;
-      margin-bottom: 1rem;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
     }
 
-    .page-header p {
+    .intro-hero h1 span {
+      color: var(--accent);
+    }
+
+    .intro-text {
       font-size: 1.2rem;
       color: var(--text-secondary);
-      max-width: 650px;
+      max-width: 750px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .intro-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .badge {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.4rem 0.9rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.8rem 1.75rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-card);
+      border-color: var(--text-secondary);
     }
 
     /* --- Section / Grid Layout --- */
@@ -316,7 +389,7 @@
         padding: 2.5rem 1.5rem;
       }
 
-      .page-header h1 {
+      .intro-hero h1 {
         font-size: 2.5rem;
       }
     }
@@ -328,13 +401,13 @@
   <aside class="sidebar">
     <div>
       <h1 class="brand-title"><a href="#">PORTFOLIO</a></h1>
-      <p class="brand-subtitle">3D Generalist & Asset Designer</p>
+      <p class="brand-subtitle">3D Artist & Asset Generalist</p>
       
       <nav>
         <ul class="nav-links">
-          <li><a href="#projects" class="active">Selected Work</a></li>
+          <li><a href="#intro" class="active">Home</a></li>
+          <li><a href="#projects">Selected Work</a></li>
           <li><a href="#breakdowns">Process & Notes</a></li>
-          <li><a href="#about">About / Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -349,10 +422,28 @@
   <!-- MAIN CONTENT AREA -->
   <main class="main-content">
 
-    <header class="page-header">
-      <h1>Selected Works & Process</h1>
-      <p>Hard-surface modeling, low-poly optimization, and texture breakdowns for real-time engines.</p>
-    </header>
+    <!-- HOME PAGE INTRODUCTION -->
+    <section id="intro" class="intro-hero">
+      <span class="intro-tag">3D Artist & Environment Designer</span>
+      <h1>Crafting real-time assets, mechanical precision, and <span>immersive 3D worlds.</span></h1>
+      
+      <p class="intro-text">
+        Welcome to my digital workspace. I specialize in hard-surface vehicle modeling, game-ready environment assets, and optimized real-time workflows—bringing historical accuracy and detailed craftsmanship into modern pipelines.
+      </p>
+
+      <div class="intro-badges">
+        <span class="badge">Blender</span>
+        <span class="badge">Substance Painter</span>
+        <span class="badge">Hard-Surface Modeling</span>
+        <span class="badge">Low-Poly Optimization</span>
+        <span class="badge">Unreal Engine / Unity</span>
+      </div>
+
+      <div class="cta-group">
+        <a href="#projects" class="btn btn-primary">View Works</a>
+        <a href="mailto:your.email@example.com" class="btn btn-secondary">Get in Touch</a>
+      </div>
+    </section>
 
     <!-- 3D PROJECTS GRID -->
     <section id="projects">
