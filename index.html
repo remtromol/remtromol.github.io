@@ -1,0 +1,245 @@
+<!--
+   index.html
+   
+   Copyright 2026 Unknown <phac@localhost>
+   
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+   MA 02110-1301, USA.
+   
+   
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Visuals & 3D Work</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0f0f11;
+      color: #e4e4e7;
+      line-height: 1.6;
+      padding: 0 1.5rem;
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: #7dd3fc;
+    }
+
+    /* Layout Containers */
+    header, section, footer {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 4rem 0 2rem;
+      border-bottom: 1px solid #27272a;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.025em;
+    }
+
+    .tagline {
+      font-size: 1.125rem;
+      color: #a1a1aa;
+      margin-top: 0.5rem;
+    }
+
+    .social-links {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .social-links a {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    /* Section Headers */
+    .section-title {
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin: 3rem 0 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* Gallery Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #3f3f46;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 200px;
+      background-color: #27272a;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body {
+      padding: 1.25rem;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #f4f4f5;
+    }
+
+    .card-desc {
+      font-size: 0.875rem;
+      color: #a1a1aa;
+      margin-top: 0.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #27272a;
+      color: #a1a1aa;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      margin-top: 0.75rem;
+    }
+
+    /* About Section */
+    .about-text {
+      color: #a1a1aa;
+      max-width: 680px;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    footer {
+      padding: 4rem 0 2rem;
+      border-top: 1px solid #27272a;
+      margin-top: 4rem;
+      color: #71717a;
+      font-size: 0.875rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Intro -->
+  <header>
+    <h1>Your Name</h1>
+    <p class="tagline">3D Artist & Visual Designer — Focused on hard-surface assets, environmental spaces, and visual concept design.</p>
+    <div class="social-links">
+      <a href="https://artstation.com" target="_blank">ArtStation</a>
+      <a href="https://github.com" target="_blank">GitHub</a>
+      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+      <a href="mailto:your.email@example.com">Email Me</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Portfolio Gallery -->
+    <section>
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="grid">
+        
+        <!-- Project 1 -->
+        <article class="card">
+          <img src="https://via.placeholder.com/600x400/27272a/ffffff?text=Project+1" alt="Project Thumbnail" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">Vintage Vehicle Model</h3>
+            <p class="card-desc">Low-poly optimized 3D mesh built for real-time engine rendering with custom PBR texturing.</p>
+            <span class="tag">Blender / Substance</span>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card">
+          <img src="https://via.placeholder.com/600x400/27272a/ffffff?text=Project+2" alt="Project Thumbnail" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">Historical Environment</h3>
+            <p class="card-desc">Architectural recreation based on historical research and blueprint measurements.</p>
+            <span class="tag">Environment Design</span>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card">
+          <img src="https://via.placeholder.com/600x400/27272a/ffffff?text=Project+3" alt="Project Thumbnail" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">Concept & Layout Work</h3>
+            <p class="card-desc">Visual composition study focused on lighting setups, camera focal points, and color grading.</p>
+            <span class="tag">Concept Art</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section>
+      <h2 class="section-title">About</h2>
+      <p class="about-text">
+        I create 3D assets, environments, and visual layouts. My workflow prioritizes poly-count efficiency, clean UV unwrapping, and accurate real-world scale modeling suitable for interactive media, game environments, and production pipelines.
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Your Name. All rights reserved.</p>
+    <p>Hosted on GitHub Pages</p>
+  </footer>
+
+</body>
+</html>
