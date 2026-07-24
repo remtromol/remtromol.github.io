@@ -33,7 +33,7 @@
   
   <style>
     /* ==========================================================================
-       Hydejack-Inspired Dark & Bold Theme for 3D Artists
+       Hydejack-Inspired Dark & Bold Theme (Orange Accent)
        ========================================================================== */
     :root {
       --bg-main: #0c0d10;
@@ -45,8 +45,8 @@
       --text-secondary: #949eb2;
       --text-muted: #5e6678;
       
-      --accent: #ff4757; /* Bold highlight color */
-      --accent-hover: #ff6b81;
+      --accent: #ff7020; /* Vibrant Dark-Theme Orange */
+      --accent-hover: #ff8c42;
       
       --font-heading: 'Space Grotesk', -apple-system, sans-serif;
       --font-body: 'Inter', -apple-system, sans-serif;
@@ -240,7 +240,8 @@
 
     .btn-secondary:hover {
       background-color: var(--bg-card);
-      border-color: var(--text-secondary);
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     /* --- Section / Grid Layout --- */
@@ -400,14 +401,14 @@
   <!-- FIXED LEFT SIDEBAR -->
   <aside class="sidebar">
     <div>
-      <h1 class="brand-title"><a href="#">PORTFOLIO</a></h1>
+      <h1 class="brand-title"><a href="index.html">PORTFOLIO</a></h1>
       <p class="brand-subtitle">3D Artist & Asset Generalist</p>
       
       <nav>
         <ul class="nav-links">
-          <li><a href="#intro" class="active">Home</a></li>
+          <li><a href="index.html" class="active">Home</a></li>
           <li><a href="#projects">Selected Work</a></li>
-          <li><a href="#breakdowns">Process & Notes</a></li>
+          <li><a href="about.html">About Me</a></li>
         </ul>
       </nav>
     </div>
@@ -415,7 +416,7 @@
     <footer class="social-links">
       <a href="#">ArtStation</a> &bull; 
       <a href="#">GitHub</a> &bull; 
-      <a href="#">Email</a>
+      <a href="about.html">Email</a>
     </footer>
   </aside>
 
@@ -441,7 +442,8 @@
 
       <div class="cta-group">
         <a href="#projects" class="btn btn-primary">View Works</a>
-        <a href="mailto:your.email@example.com" class="btn btn-secondary">Get in Touch</a>
+        <!-- LINKED TO ABOUT ME PAGE -->
+        <a href="about.html" class="btn btn-secondary">Get in Touch</a>
       </div>
     </section>
 
@@ -452,7 +454,7 @@
       <div class="portfolio-grid">
         
         <article class="card">
-          <div class="card-thumb" style="background: #1e222a center/cover no-repeat url('https://via.placeholder.com/600x400/181b22/888888?text=1948+Ford+Deluxe');"></div>
+          <div class="card-thumb" style="background: #1e222a center/cover no-repeat url('images/vehicle-render.png');"></div>
           <div class="card-body">
             <span class="card-tag">Hard Surface</span>
             <h3 class="card-title"><a href="#">Vintage Coupe Restoration</a></h3>
@@ -461,7 +463,7 @@
         </article>
 
         <article class="card">
-          <div class="card-thumb" style="background: #1e222a center/cover no-repeat url('https://via.placeholder.com/600x400/181b22/888888?text=Temple+Environment');"></div>
+          <div class="card-thumb" style="background: #1e222a center/cover no-repeat url('images/temple-environment.png');"></div>
           <div class="card-body">
             <span class="card-tag">Environment</span>
             <h3 class="card-title"><a href="#">Historical Temple Modular Kit</a></h3>
