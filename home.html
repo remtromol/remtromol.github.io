@@ -60,6 +60,7 @@
     }
 
     /* --- Sidebar (Hydejack Style Fixed Left Panel) --- */
+    /* 1. DESKTOP MODE (Default) */
     .sidebar {
       width: 340px;
       backdrop-filter: blur(8px);
@@ -75,6 +76,23 @@
       left: 0;
       z-index: 100;
     }
+    
+    /* 2. MOBILE OVERRIDES (Screens 768px wide or smaller) */
+    @media (max-width: 768px) {
+      .sidebar {
+        position: relative; /* Unpins from screen height on mobile */
+        width: 100%;
+        height: auto;
+        padding: 2rem 1.5rem 1rem 1.5rem;
+      }
+    
+      .social-links {
+        margin-top: 2.5rem; /* Creates the lower spacing you want on mobile */
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.15); 
+      }
+    }
+
 
     .brand-title {
       font-family: var(--font-heading);
