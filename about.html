@@ -57,9 +57,35 @@
       top: 0;
       bottom: 0;
       left: 0;
-      z-index: 100;
+      z-index: 100;  
     }
-
+    
+    /* 2. MOBILE OVERRIDES (Screens 768px wide or smaller) */
+      @media (max-width: 768px) {
+    .sidebar {
+      position: relative;
+      width: 100%;
+      height: auto;
+      padding: 2rem 1.5rem 1rem 1.5rem;
+    }
+  
+    .social-links {
+      position: relative; /* Needed to anchor the pseudo-element line */
+      margin-top: 2.5rem; 
+      padding-top: 1.5rem; /* Space between the custom line and the links */
+    }
+  
+    /* Custom short divider line */
+    .social-links::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;           /* Aligns the line to the left */
+      width: 200px;       /* Set this to whatever width you want (e.g., 50px, 80px, 20%) */
+      height: 1px;       /* The line thickness */
+      background-color: rgba(255, 255, 255, 0.3); /* Line color */
+    }
+      }
     .brand-title {
       font-family: var(--font-heading);
       font-size: 2rem;
