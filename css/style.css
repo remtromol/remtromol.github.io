@@ -305,7 +305,7 @@ body {
 }
 
 .card {
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
@@ -318,10 +318,10 @@ body {
 }
 
 .card-thumb {
+  backdrop-filter: blur(8px);
   width: 100%;
   height: 220px;
   object-fit: cover;
-  background-color: #000;
   display: block;
 }
 
