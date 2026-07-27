@@ -16,7 +16,6 @@
   --accent-hover: #ff8c42;
   --font-heading: 'Space Grotesk', -apple-system, sans-serif;
   --font-body: 'Inter', -apple-system, sans-serif;
-  --gallery-bleed: 96px; /* how much wider gallery blocks expand beyond container */
 }
 
 /* ---------- BACKGROUND IMAGE (Dark Reader safe) ----------
@@ -186,7 +185,8 @@ body {
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 0.95rem;
-  padding: 0.8rem 1.75rem;
+  padding: 0.7rem 1.75rem;
+  margin: 0.5rem 0;
   border-radius: 12px;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -240,6 +240,7 @@ body {
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 1rem;
+  margin-top: 5rem;
 }
 
 .intro-hero h1 {
@@ -288,12 +289,11 @@ body {
 
 .section-title {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.75rem;
+  margin: 3rem 0 1.5rem;
+  padding-bottom: 0;
 }
 
 .portfolio-grid {
@@ -427,7 +427,8 @@ body {
   font-size: 3.2rem;
   font-weight: 700;
   letter-spacing: -0.04em;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
+  margin-top: 5rem;
 }
 
 .about-grid {
@@ -460,15 +461,6 @@ body {
 
 .bio-text strong {
   color: var(--text-primary);
-}
-
-.section-heading {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin: 3rem 0 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .skills-grid {
@@ -512,6 +504,7 @@ body {
   font-size: 1.1rem;
   color: var(--text-secondary);
   margin-bottom: 3.5rem;
+  margin-top: 0;
   max-width: 650px;
 }
  
@@ -714,17 +707,7 @@ body {
   border-color: var(--accent);
   color: #fff;
 }
- 
-.swipe-hint {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
-  font-family: var(--font-heading);
-}
- 
+
 /* =========================================================
    SHARED RESPONSIVE BREAKPOINT (tablet / mobile layout)
    ========================================================= */
