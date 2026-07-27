@@ -16,6 +16,7 @@
   --accent-hover: #ff8c42;
   --font-heading: 'Space Grotesk', -apple-system, sans-serif;
   --font-body: 'Inter', -apple-system, sans-serif;
+  --gallery-bleed: 96px; /* how much wider gallery blocks expand beyond container */
 }
 
 /* ---------- BACKGROUND IMAGE (Dark Reader safe) ----------
@@ -165,7 +166,7 @@ body {
 .main-content {
   margin-left: 340px;
   flex: 1;
-  padding: 4rem 5rem;
+  padding: 1rem 1rem;
   max-width: 1100px;
 }
 
@@ -186,7 +187,7 @@ body {
   font-weight: 700;
   font-size: 0.95rem;
   padding: 0.8rem 1.75rem;
-  border-radius: 6px;
+  border-radius: 12px;
   text-decoration: none;
   transition: all 0.2s ease;
 }
@@ -202,7 +203,7 @@ body {
   font-size: 0.95rem;
   text-decoration: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 6px;
+  border-radius: 12px;
   transition: all 0.2s ease;
 }
 
@@ -305,7 +306,7 @@ body {
 .card {
   backdrop-filter: blur(8px);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
@@ -445,7 +446,7 @@ body {
   width: 100%;
   height: 340px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid var(--border-color);
   background-color: var(--bg-card);
 }
@@ -521,7 +522,7 @@ body {
   padding: 1.5rem;
   margin-bottom: 4rem;
 }
- 
+
 .project-header {
   margin-bottom: 1.5rem;
 }
@@ -552,7 +553,7 @@ body {
 .carousel-wrapper {
   position: relative;
   margin-top: 1.5rem;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border-color);
 }
@@ -609,51 +610,20 @@ body {
 .project-block.wide {
   max-width: 1200px;
   margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 /* Optional: apply non-cropping images inside project blocks */
 .project-block img {
   width: 100%;
   height: auto;
+  border-radius: 12px;
   object-fit: contain;
   object-position: center;
   background-color: var(--bg-card);
 }
 
-/* --- Full-bleed / full-viewport width modifier --- */
-/* Use `full-bleed` on an article.project-block to make it span the
-   entire viewport width (edge-to-edge) on all devices while keeping
-   content padded. This works from inside the `.main-content` flow. */
-.project-block.full-bleed {
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
-  max-width: 100vw;
-  box-sizing: border-box;
-  border-radius: 0;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.project-block.full-bleed .carousel-wrapper {
-  margin-left: 0;
-  margin-right: 0;
-  border-radius: 0;
-  overflow: hidden;
-}
-
-@media (max-width: 900px) {
-  .project-block.full-bleed {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
- 
 /* Text area: takes remaining space, room on the right is reserved
    so it never runs under the floating arrow buttons */
 .caption-text-wrap {
@@ -687,16 +657,7 @@ body {
   z-index: 1;
   pointer-events: none;
 }
- 
-.caption-text-wrap.marquee::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(12, 13, 16, 0.55), transparent);
-}
- 
-.caption-text-wrap.marquee::after {
-  right: 0;
-  background: linear-gradient(to left, rgba(12, 13, 16, 0.55), transparent);
-}
+
  
 @keyframes marquee-scroll {
   0%   { transform: translateX(0); }
@@ -781,85 +742,10 @@ body {
   }
  
   .main-content {
-    margin-left: 0;
-    padding: 2.5rem 1.5rem;
+    margin: 0.5rem 0.5rem;
+    padding: 0.5rem 0.5rem;
   }
- 
-  /* Projects gallery only: drop main-content's side padding so the
-     carousel can run edge-to-edge, then re-add padding directly to
-     the text elements so they still have breathing room */
-  .main-content.gallery {
-    padding: 2.5rem 0;
-  }
- 
-  .main-content.gallery .page-title,
-  .main-content.gallery .page-desc,
-  .main-content.gallery .project-header,
-  .main-content.gallery .swipe-hint {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
- 
-  .intro-hero h1 {
-    font-size: 2.5rem;
-  }
- 
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
- 
-  .profile-photo {
-    height: 280px;
-  }
- 
-  /* Project card stops being a padded/bordered box on mobile so the
-     gallery inside it can run edge-to-edge across the full screen */
-  .project-block {
-    padding: 0;
-    border: none;
-    border-radius: 0;
-    background: transparent;
-    backdrop-filter: none;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 2.5rem;
-  }
- 
-  .carousel-wrapper {
-    margin-top: 1rem;
-    width: 100%;
-    border-left: none;
-    border-right: none;
-    border-radius: 0;
-  }
- 
-  /* Images fill the full screen width; aspect-ratio + cover keeps
-     them large and edge-to-edge instead of small/letterboxed */
-  .carousel-slide img {
-    height: auto;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-  }
- 
-  .slide-caption {
-    height: 38px;
-    padding: 0 78px 0 0.9rem;
-    font-size: 0.78rem;
-  }
- 
-  .carousel-nav {
-    height: 38px;
-    right: 0.5rem;
-    gap: 0.4rem;
-  }
- 
-  .carousel-btn {
-    width: 26px;
-    height: 26px;
-  }
- 
-  .carousel-btn svg {
-    width: 12px;
-    height: 12px;
+  .project-block.img {
+    padding: 0.5rem;
   }
 }
- 
