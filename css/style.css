@@ -6,11 +6,11 @@
 
 /* ---------- ROOT VARIABLES ---------- */
 :root {
-  --bg-main: #101317; /* fallback color shown if the bg image fails/hasn't loaded */
-  --bg-card: #181b22;
+  --bg-main: #00000026; /* fallback color shown if the bg image fails/hasn't loaded */
+  --bg-card: #00000026;
   --border-color: rgba(255, 255, 255, 0.3);
-  --text-primary: #dedede;
-  --text-secondary: #dedede;
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff;
   --text-muted: #878787;
   --accent: #ff7020; /* Vibrant Dark-Theme Orange */
   --accent-hover: #ff8c42;
@@ -620,6 +620,38 @@ body {
   object-fit: contain;
   object-position: center;
   background-color: var(--bg-card);
+}
+
+/* --- Full-bleed / full-viewport width modifier --- */
+/* Use `full-bleed` on an article.project-block to make it span the
+   entire viewport width (edge-to-edge) on all devices while keeping
+   content padded. This works from inside the `.main-content` flow. */
+.project-block.full-bleed {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  max-width: 100vw;
+  box-sizing: border-box;
+  border-radius: 0;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.project-block.full-bleed .carousel-wrapper {
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .project-block.full-bleed {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
  
 /* Text area: takes remaining space, room on the right is reserved
