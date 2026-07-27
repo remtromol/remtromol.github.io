@@ -554,7 +554,7 @@ body {
   overflow: hidden;
   border: 1px solid var(--border-color);
 }
- 
+
 .carousel-track {
   display: flex;
   overflow-x: auto;
@@ -563,34 +563,34 @@ body {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
- 
+
 .carousel-track::-webkit-scrollbar {
   display: none;
 }
- 
+
 .carousel-slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
   position: relative;
   background-color: rgba(0, 0, 0, 0.1);
 }
- 
+
 .carousel-slide img {
   width: 100%;
   height: 480px;
   object-fit: contain;
   display: block;
 }
- 
+
 .slide-caption {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
+  height: 44px;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0.6rem 0.75rem 0.6rem 1.25rem;
+  padding: 0 100px 0 1.25rem;
   background: rgba(12, 13, 16, 0.55);
   backdrop-filter: blur(4px);
   color: var(--text-primary);
@@ -598,26 +598,30 @@ body {
   font-family: var(--font-heading);
   border-top: 1px solid var(--border-color);
 }
- 
-/* Text area: takes remaining space, never pushes into the arrows */
+
+/* Text area: takes remaining space, room on the right is reserved
+   so it never runs under the floating arrow buttons */
 .caption-text-wrap {
   flex: 1 1 auto;
   min-width: 0; /* required for flex children to actually shrink/clip */
+  height: 100%;
+  display: flex;
+  align-items: center;
   overflow: hidden;
   white-space: nowrap;
   position: relative;
 }
- 
+
 .caption-text {
   display: inline-block;
 }
- 
+
 /* Applied via JS only when the text actually overflows its container */
 .caption-text-wrap.marquee .caption-text {
   animation: marquee-scroll 9s linear infinite;
   padding-right: 3rem;
 }
- 
+
 .caption-text-wrap.marquee::before,
 .caption-text-wrap.marquee::after {
   content: "";
@@ -628,52 +632,73 @@ body {
   z-index: 1;
   pointer-events: none;
 }
- 
+
 .caption-text-wrap.marquee::before {
   left: 0;
   background: linear-gradient(to right, rgba(12, 13, 16, 0.55), transparent);
 }
- 
+
 .caption-text-wrap.marquee::after {
   right: 0;
   background: linear-gradient(to left, rgba(12, 13, 16, 0.55), transparent);
 }
- 
+
 @keyframes marquee-scroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
- 
-/* Nav arrows: now docked inside the caption bar, right side */
+
+/* Nav arrows: a fixed overlay pinned to the wrapper itself (NOT inside
+   carousel-track), so they stay put in place while slides scroll past
+   underneath them. */
 .carousel-nav {
+  position: absolute;
+  bottom: 0;
+  right: 0.75rem;
+  height: 44px;
   display: flex;
+  align-items: center;
   gap: 0.5rem;
-  flex-shrink: 0;
+  z-index: 5;
 }
- 
+
 .carousel-btn {
-  position: static;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   width: 30px;
   height: 30px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  line-height: 0;
+  font-size: 0;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.95rem;
-  line-height: 1;
   transition: all 0.2s ease;
 }
- 
+
+/* SVG chevrons center perfectly regardless of font baseline quirks */
+.carousel-btn svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .carousel-btn:hover {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
 }
- 
+
 .swipe-hint {
   display: inline-flex;
   align-items: center;
