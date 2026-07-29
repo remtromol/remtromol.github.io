@@ -30,6 +30,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  background-color: #000000;
 }
 
 /* ---------- RESET ---------- */
@@ -46,13 +47,14 @@ body {
   line-height: 1.6;
   display: flex;
   min-height: 100vh;
+  padding: 0 1.5rem;
 }
 
 /* ---------- SIDEBAR (fixed left panel) ---------- */
 .sidebar {
   width: 340px;
   backdrop-filter: blur(8px);
-    border-right: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
   padding: 3rem 2.5rem;
   display: flex;
   flex-direction: column;
@@ -229,7 +231,7 @@ body {
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 1rem;
-  margin-top: 5rem;
+  margin-top: 8rem;
 }
 
 .intro-hero h1 {
@@ -417,7 +419,7 @@ body {
   font-weight: 700;
   letter-spacing: -0.04em;
   margin-bottom: 0;
-  margin-top: 5rem;
+  margin-top: 8rem;
 }
 
 .about-grid {
@@ -587,11 +589,9 @@ body {
   border-top: 1px solid var(--border-color);
 }
 
-/* --- Wide / non-cropped project modifier --- */
-/* Add `wide` to an article.project-block to allow a larger centered
-   project container on wide screens without changing global layout. */
+/*Wide / non-cropped project modifier*/
 .project-block.wide {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding-left: 2.5rem;
   padding-right: 2.5rem;
@@ -607,11 +607,9 @@ body {
   background-color: var(--bg-card);
 }
 
-/* Text area: takes remaining space, room on the right is reserved
-   so it never runs under the floating arrow buttons */
 .caption-text-wrap {
   flex: 1 1 auto;
-  min-width: 0; /* required for flex children to actually shrink/clip */
+  min-width: 0;
   height: 100%;
   display: flex;
   align-items: center;
@@ -647,9 +645,7 @@ body {
   100% { transform: translateX(-50%); }
 }
  
-/* Nav arrows: a fixed overlay pinned to the wrapper itself (NOT inside
-   carousel-track), so they stay put in place while slides scroll past
-   underneath them. */
+/*nav buttons inside carousel*/
 .carousel-nav {
   position: absolute;
   bottom: 0;
@@ -680,7 +676,7 @@ body {
   transition: all 0.2s ease;
 }
  
-/* SVG chevrons center perfectly regardless of font baseline quirks */
+/*SVG chevrons*/
 .carousel-btn svg {
   width: 14px;
   height: 14px;
@@ -698,14 +694,12 @@ body {
   color: #fff;
 }
 
-/* =========================================================
-   SHARED RESPONSIVE BREAKPOINT (tablet / mobile layout)
-   ========================================================= */
+/*mobile*/
 @media (max-width: 900px) {
   body {
     flex-direction: column;
   }
- 
+
   .sidebar {
     width: 100%;
     position: relative;
@@ -715,8 +709,8 @@ body {
   }
  
   .main-content {
-    margin: 0.5rem 0.5rem;
-    padding: 0.5rem 0.5rem;
+    margin: 10px 10px;
+    padding: 10px 10px;
   }
   .project-block.img {
     padding: 0.5rem;
