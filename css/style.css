@@ -741,20 +741,26 @@ body {
     padding: 1px 1px;
   }
  
+  .project-tag {
+    margin-top: 0.1rem;
+    margin-bottom: 1rem;
+  }
+
   .project-block {
-    border-radius: 20px;
+    border-radius: 24px;
     margin-bottom: 1.5rem;
-}
+    padding: 0.5rem;
+    padding-bottom: 5px;
+  }
 
   .project-block.wide {
     padding: 0;
   }
 
   .carousel-wrapper {
-    margin-left: 0.05rem;
-    margin-right: 0.05rem;
-}
- 
+    margin-left: 0;
+    margin-right: 0;
+  }
 
   /* Stacking layout for mobile screens */
   .about-grid {
@@ -774,26 +780,73 @@ body {
     cursor: pointer;
   }
 
-  /* Lightbox Modal Overlay */
-  .image-modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    justify-content: center;
-    align-items: center;
-    cursor: zoom-out;
-  }
+/* Lightbox Modal Overlay */
+.image-modal {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+  backdrop-filter: blur(8px);
 
-  .image-modal img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 18px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    cursor: default;
-  }
+  /* Hidden state with transitions */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.5s ease;
+}
+
+/* Close Button (X) */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  color: #fff;
+  font-size: 35px;
+  font-weight: bold;
+  line-height: 1;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10000;
+  padding: 5px 10px;
+  border-radius: 50%;
+  transition: color 0.2s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: #bbb;
+  transform: scale(1.1);
+  outline: none;
+}
+
+.image-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  cursor: default;
+
+  /* Start smaller for the pop-out effect */
+  transform: scale(0.85);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Open State (Triggered via JS) */
+.image-modal.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.image-modal.open img {
+  transform: scale(1); /* Scales up into full size */
+}

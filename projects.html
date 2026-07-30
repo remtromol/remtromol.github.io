@@ -79,7 +79,7 @@
     <article class="project-block">
       <div class="project-header">
         <span class="project-tag">Environment Asset</span>
-        <h2 class="project-title">Historical Temple Relief Kit</h2>
+        <h2 class="project-title">Historical Temple Relief</h2>
         <p class="project-desc">Modular stone wall structures, carved reliefs, and tileable material layering.</p>
       </div>
 
@@ -156,101 +156,103 @@
 
   <!-- LIGHTBOX MODAL CONTAINER -->
   <div id="imageModal" class="image-modal" onclick="closeModal()">
+    <!-- Close Button -->
+    <button class="close-btn" aria-label="Close modal" onclick="closeModal()">&times;</button>
     <img id="modalImage" src="" alt="Enlarged view" onclick="event.stopPropagation()">
   </div>
 
   <!-- SCRIPTS -->
-  <script>
-    // 1. CAROUSEL FUNCTIONS
-    function scrollCarousel(button, direction) {
-      const wrapper = button.closest('.carousel-wrapper');
+<script>
+  // 1. CAROUSEL FUNCTIONS
+  function scrollCarousel(button, direction) {
+    const wrapper = button.closest('.carousel-wrapper');
+    const track = wrapper.querySelector('.carousel-track');
+    const slideWidth = track.clientWidth;
+
+    track.scrollBy({
+      left: direction * slideWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  function applyMarquee(wrap) {
+    const textEl = wrap.querySelector('.caption-text');
+    wrap.classList.remove('marquee');
+    const original = textEl.dataset.original;
+    textEl.textContent = original;
+    if (textEl.scrollWidth > wrap.clientWidth) {
+      textEl.textContent = original + '\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0' + original;
+      wrap.classList.add('marquee');
+    }
+  }
+
+  function updateCaption(wrapper) {
+    const track = wrapper.querySelector('.carousel-track');
+    const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+    if (!slides.length) return;
+
+    const index = Math.round(track.scrollLeft / track.clientWidth);
+    const clampedIndex = Math.min(Math.max(index, 0), slides.length - 1);
+    const activeSlide = slides[clampedIndex];
+
+    const wrap = wrapper.querySelector('.caption-text-wrap');
+    const textEl = wrap.querySelector('.caption-text');
+    textEl.dataset.original = activeSlide.dataset.caption || '';
+    applyMarquee(wrap);
+  }
+
+  function initCarousels() {
+    document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
       const track = wrapper.querySelector('.carousel-track');
-      const slideWidth = track.clientWidth;
+      updateCaption(wrapper);
 
-      track.scrollBy({
-        left: direction * slideWidth,
-        behavior: 'smooth'
-      });
-    }
-
-    function applyMarquee(wrap) {
-      const textEl = wrap.querySelector('.caption-text');
-      wrap.classList.remove('marquee');
-      const original = textEl.dataset.original;
-      textEl.textContent = original;
-      if (textEl.scrollWidth > wrap.clientWidth) {
-        textEl.textContent = original + '\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0' + original;
-        wrap.classList.add('marquee');
-      }
-    }
-
-    function updateCaption(wrapper) {
-      const track = wrapper.querySelector('.carousel-track');
-      const slides = Array.from(track.querySelectorAll('.carousel-slide'));
-      if (!slides.length) return;
-
-      const index = Math.round(track.scrollLeft / track.clientWidth);
-      const clampedIndex = Math.min(Math.max(index, 0), slides.length - 1);
-      const activeSlide = slides[clampedIndex];
-
-      const wrap = wrapper.querySelector('.caption-text-wrap');
-      const textEl = wrap.querySelector('.caption-text');
-      textEl.dataset.original = activeSlide.dataset.caption || '';
-      applyMarquee(wrap);
-    }
-
-    function initCarousels() {
-      document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
-        const track = wrapper.querySelector('.carousel-track');
-        updateCaption(wrapper);
-
-        let scrollTimeout;
-        track.addEventListener('scroll', () => {
-          clearTimeout(scrollTimeout);
-          scrollTimeout = setTimeout(() => updateCaption(wrapper), 120);
-        });
-      });
-    }
-
-    window.addEventListener('load', initCarousels);
-    window.addEventListener('resize', () => {
-      document.querySelectorAll('.carousel-wrapper').forEach(wrapper => updateCaption(wrapper));
-    });
-
-    // 2. LIGHTBOX & PROTECTION FUNCTIONS
-    function openModal(imgSrc) {
-      const modal = document.getElementById('imageModal');
-      const modalImg = document.getElementById('modalImage');
-      modalImg.src = imgSrc;
-      modal.style.display = 'flex';
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('imageModal');
-      modal.style.display = 'none';
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      // Exclude background wrapper and modal image from click-to-enlarge
-      const galleryImages = document.querySelectorAll('.carousel-slide img');
-      const allImages = document.querySelectorAll('img');
-
-      // Click to open in lightbox
-      galleryImages.forEach(img => {
-        img.addEventListener('click', () => openModal(img.src));
-      });
-
-      // Disable right-click and drag on ALL images on the page
-      allImages.forEach(img => {
-        img.addEventListener('contextmenu', (e) => e.preventDefault());
-        img.addEventListener('dragstart', (e) => e.preventDefault());
+      let scrollTimeout;
+      track.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => updateCaption(wrapper), 120);
       });
     });
-  </script>
+  }
+
+  window.addEventListener('load', initCarousels);
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('.carousel-wrapper').forEach(wrapper => updateCaption(wrapper));
+  });
+
+  // 2. LIGHTBOX & PROTECTION FUNCTIONS
+  function openModal(imgSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    
+    modalImg.src = imgSrc;
+    modal.classList.add('open');
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('open');
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryImages = document.querySelectorAll('.carousel-slide img');
+    const allImages = document.querySelectorAll('img');
+
+    // Click to open in lightbox
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => openModal(img.src));
+    });
+
+    // Disable right-click and drag on ALL images on the page
+    allImages.forEach(img => {
+      img.addEventListener('contextmenu', (e) => e.preventDefault());
+      img.addEventListener('dragstart', (e) => e.preventDefault());
+    });
+  });
+</script>
 
 </body>
 </html>
