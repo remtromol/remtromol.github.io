@@ -6,3 +6,6 @@ markdown: kramdown
 collections:
   portfolio:
     output: false
+  blog:
+    output: true
+    permalink: /blog/:title/

@@ -9,7 +9,6 @@ layout: default
   {% for item in sorted_portfolio %}
   <article class="project-block" id="{{ item.title | slugify }}">
     <div class="project-header">
-      <span class="project-tag">{{ item.tag }}</span>
       <h2 class="project-title">{{ item.title }}</h2>
       <p class="project-desc">{{ item.description }}</p>
     </div>

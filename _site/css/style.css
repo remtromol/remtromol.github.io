@@ -2,6 +2,7 @@
    REMTROMOL PORTFOLIO — SHARED STYLESHEET
    ========================================================= */
 
+
 /* ---------- ROOT VARIABLES ---------- */
 :root {
   --bg-main: #00000026; /* fallback color shown if the bg image fails/hasn't loaded */
@@ -12,7 +13,7 @@
   --text-muted: #878787;
   --accent: #ff7020; /* Vibrant Dark-Theme Orange */
   --accent-hover: #ff8c42;
-  --font-heading: 'Space Grotesk', -apple-system, sans-serif;
+  --font-heading: 'Old Standard TT', serif;
   --font-body: 'Inter', -apple-system, sans-serif;
 }
 
@@ -50,6 +51,28 @@ body {
   padding: 0;
 }
 
+a,
+a:link,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
 /* ---------- SIDEBAR (fixed left panel) ---------- */
 .sidebar {
   width: 340px;
@@ -74,7 +97,7 @@ body {
   font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.04em;
   line-height: 1.1;
   margin-bottom: 0.5rem;
 }
@@ -105,7 +128,7 @@ body {
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 1.1rem;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.04em;
   transition: color 0.2s ease;
 }
 
@@ -157,7 +180,7 @@ body {
   font-size: 0.95rem;
   padding: 0.7rem 1.75rem;
   margin: 0.5rem 0;
-  border-radius: 12px;
+  border-radius: 18px;
   text-decoration: none;
   transition: all 0.2s ease;
 }
@@ -173,7 +196,7 @@ body {
   font-size: 0.95rem;
   text-decoration: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 12px;
+  border-radius: 18px;
   transition: all 0.2s ease;
 }
 
@@ -217,9 +240,9 @@ body {
 
 .intro-hero h1 {
   font-family: var(--font-heading);
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: 0.04em;
   line-height: 1.1;
   margin-bottom: 1.5rem;
 }
@@ -248,9 +271,9 @@ body {
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   padding: 0.4rem 0.9rem;
-  border-radius: 4px;
+  border-radius: 12px;
   font-size: 0.85rem;
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-weight: 600;
 }
 
@@ -260,10 +283,10 @@ body {
 }
 
 .section-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 1.6rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.04em;
   margin: 3rem 0 1.5rem;
   padding-bottom: 0;
 }
@@ -277,7 +300,8 @@ body {
 .card {
   position: relative;
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: 18px;
+  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
   overflow: hidden;
   transition: transform 0.2s ease, border-color 0.2s ease;
@@ -323,8 +347,8 @@ body {
   inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.5rem;
+  justify-content: normal;
+  padding: 14% 1.5rem;
   background: rgba(0, 0, 0, 0.35);
   opacity: 0;
   transform: translateY(16px);
@@ -336,22 +360,13 @@ body {
   transform: translateY(0);
 }
 
-.card-tag {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  margin-bottom: 0.25rem;
-  display: block;
-}
-
 .card-title {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 2rem;
   font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 0.25rem;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+  margin-left: -0.1rem;
 }
 
 .card-title a {
@@ -362,7 +377,7 @@ body {
 .card-excerpt {
   font-size: 0.75rem;
   color: var(--text-secondary);
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .post-list {
@@ -387,7 +402,7 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.04em;
 }
 
 .post-title a {
@@ -432,7 +447,6 @@ body {
   font-family: var(--font-heading);
   font-size: 3.2rem;
   font-weight: 700;
-  letter-spacing: -0.04em;
   margin-bottom: 0;
   margin-top: 8rem;
 }
@@ -443,16 +457,41 @@ body {
   gap: 1.5rem;
   backdrop-filter: blur(8px);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: 24px;
   padding: 2rem;
   margin-bottom: 4rem;
   background-color: transparent;
 }
 
+/* Responsive layout: image beside text on desktop, stacked on mobile */
+@media (min-width: 900px) {
+  .about-grid {
+    /* fixed-width image column + flexible text column */
+    grid-template-columns: 320px 1fr;
+    gap: 2rem;
+    align-items: center; /* vertically center image and text */
+  }
+
+  .profile-photo {
+    width: 320px;      /* match the column width */
+    height: auto;
+    max-width: 100%;
+    object-fit: cover; /* preserve cropping nicely */
+    border-radius: 12px;
+    margin: 0;         /* remove any auto centering on desktop */
+    display: block;
+  }
+
+  .bio-text {
+    align-self: center;
+  }
+}
+
+
 .profile-photo {
   width: 100%;
   max-width: 280px;
-  height: 340px;
+  height: auto; /* allow natural aspect ratio; overridden on desktop */
   object-fit: cover;
   border-radius: 12px;
   border: 1px solid var(--border-color);
@@ -460,10 +499,16 @@ body {
 }
 
 .bio-text p {
+  text-align: justify;
   font-size: 1.1rem;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   line-height: 1.7;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  text-justify: inter-word;
 }
 
 .bio-text strong {
@@ -486,7 +531,7 @@ body {
   backdrop-filter: blur(8px);
   border: 1px solid var(--border-color);
   padding: 1.5rem;
-  border-radius: 12px;
+  border-radius: 24px;
 }
 
 .skill-card h3 {
@@ -568,6 +613,7 @@ body {
 .project-desc {
   color: var(--text-secondary);
   font-size: 0.75rem;
+  letter-spacing: 0.02em;
 }
  
 /* --- Carousel --- */
@@ -642,7 +688,7 @@ body {
   backdrop-filter: blur(4px);
   color: var(--text-primary);
   font-size: 0.85rem;
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   border-top: 1px solid var(--border-color);
 }
 
@@ -830,8 +876,8 @@ body {
     border-right: 1px solid var(--border-color);
     border-left: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
     border-top-right-radius: 0;
   }
 
@@ -886,13 +932,4 @@ body {
     margin-right: 0;
   }
 
-  /* Stacking layout for mobile screens */
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .profile-photo {
-    max-width: 280px; /* Keeps image width consistent with original size */
-  }
 }

@@ -30,7 +30,6 @@ layout: default
           <a href="{{ '/projects#' | append: project_slug | relative_url }}" class="card-link" aria-label="View project {{ item.title }}">
             <img src="{{ item.images[0].src }}" alt="{{ item.images[0].alt }}" class="card-thumb">
             <div class="card-body">
-              <span class="card-tag">{{ item.tag }}</span>
               <h3 class="card-title">{{ item.title }}</h3>
               <p class="card-excerpt">{{ item.description }}</p>
             </div>
