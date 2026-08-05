@@ -21,33 +21,39 @@ layout: default
     {% if blog_posts and blog_posts.size > 0 %}
       {% for post in blog_posts %}
 
-        {% comment %} Determine image source with fallback logic {% endcomment %}
+        {% comment %} Determine image source: 1st image in post content -> Default fallback {% endcomment %}
         {% assign post_thumbnail = nil %}
 
-        {% if post.image %}
-          {% assign post_thumbnail = post.image %}
-        {% elsif post.content contains '<img' %}
+        {% if post.content contains '<img' %}
           {% assign first_img_tag = post.content | split: '<img' | last | split: '>' | first %}
           {% assign post_thumbnail = first_img_tag | split: 'src="' | last | split: '"' | first %}
+          
+          {% comment %} Fix Windows backslashes and missing leading slash {% endcomment %}
+          {% assign post_thumbnail = post_thumbnail | replace: '\', '/' %}
+          {% assign first_char = post_thumbnail | slice: 0 %}
+          {% if first_char != '/' %}
+            {% assign post_thumbnail = post_thumbnail | prepend: '/' %}
+          {% endif %}
         {% else %}
-          {% comment %} Default fallback image for posts without any pictures {% endcomment %}
-          {% assign post_thumbnail = 'image\7jx3IBQ.webp' %}
+          {% assign post_thumbnail = '/image/7jx3IBQ.webp' %}
         {% endif %}
 
         <article class="post-item">
-          <a href="{{ post.url | relative_url }}" class="post-thumbnail-link">
-            <img src="{{ post_thumbnail | relative_url }}" alt="{{ post.title }}" class="post-thumbnail" loading="lazy">
-          </a>
-
-          <div class="post-content-wrapper">
-            <div class="post-header">
-              <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-              <div class="post-meta">{{ post.date | date: "%B %d, %Y" }}</div>
+          <a href="{{ post.url | relative_url }}" class="post-card-link">
+            <div class="post-thumbnail-wrapper">
+              <img src="{{ post_thumbnail | relative_url }}" alt="{{ post.title }}" class="post-thumbnail" loading="lazy">
             </div>
-            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-            <a class="read-more" href="{{ post.url | relative_url }}">Read more →</a>
-          </div>
+
+            <div class="post-content-wrapper">
+              <div class="post-header">
+                <h2 class="post-title">{{ post.title }}</h2>
+                <div class="post-meta">{{ post.date | date: "%B %d, %Y" }}</div>
+              </div>
+              <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+            </div>
+          </a>
         </article>
+
       {% endfor %}
     {% else %}
       <article class="post-item">
@@ -55,5 +61,6 @@ layout: default
       </article>
     {% endif %}
   </div>
-    {% include footer.html %}
+
+  {% include footer.html %}
 </main>

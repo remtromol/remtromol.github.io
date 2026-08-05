@@ -4,7 +4,6 @@ title: "Markdown Basics: A Quick Reference Guide for Jekyll"
 date: 2026-08-05
 author: "Naufal Fakhri"
 excerpt: "A complete cheatsheet on writing, formatting, and adding media to .md files for blog posts and portfolio documentation."
-image: /assets/images/posts/markdown-guide-hero.jpg
 ---
 
 Markdown (`.md`) is a lightweight text-formatting syntax that lets you write readable content without cluttering your file with raw HTML tags. When Jekyll builds your site, it automatically parses Markdown files into clean HTML.
@@ -39,4 +38,4 @@ Apply simple symbols around your words to style text:
 
 it looks like this 
 
-![meta maybe](image\blog\screenshot-of.webp)
+![screenshot]({{ '/image/blog/screenshot-of.webp' | relative_url }})
