@@ -45,7 +45,7 @@ body {
   color: var(--text-primary);
   font-family: var(--font-body);
   line-height: 1.6;
-  display: flex;
+  display: block;
   min-height: 100vh;
   padding: 0;
 }
@@ -135,14 +135,14 @@ body {
 .main-content {
   margin-left: 340px;
   flex: 1;
-  padding: 5rem 4rem;
-  max-width: 1100px;
+  padding: 2em 1em;
+  max-width: 1400px;
 }
 
 /* about.html used a slightly narrower content column — kept as an
    optional modifier so behavior stays identical page to page. */
 .main-content.narrow {
-  max-width: 1000px;
+  max-width: 1050px;
 }
 
 .main-content.gallery {
@@ -200,7 +200,7 @@ body {
    ========================================================= */
 .intro-hero {
   margin-bottom: 4.5rem;
-  padding-bottom: 3rem;
+  padding-bottom: 1em;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -270,8 +270,7 @@ body {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, min(45em, 95%));
-  gap: 2rem;
+  gap: 1rem;
   margin-bottom: 4rem;
 }
 
@@ -581,11 +580,16 @@ body {
   flex: 0 0 100%;
   scroll-snap-align: start;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgba(0, 0, 0, 0.1);
 }
  
 .carousel-slide img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
   object-fit: contain;
   object-position: center;
@@ -697,85 +701,6 @@ body {
   color: #fff;
 }
 
-/*mobile*/
-@media (max-width: 900px) {
-  body {
-    flex-direction: column;
-    padding: 0 0.5rem;
-  }
-
-  .sidebar {
-    width: 100%;
-    position: relative;
-    padding: 2.5rem;
-    top: 0;
-    border-top: none;
-    border-right: 1px solid var(--border-color);
-    border-left: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    border-top-right-radius: 0;
-  }
-
-  /* Remove the extra top padding added on the brand link for mobile */
-  .brand-title a {
-    padding-top: 0;
-  }
-
-  .social-links {
-    position: relative;
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
-  }
-
-  .social-links::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.3);
-  }
- 
-  .main-content {
-    margin: 1px 1px;
-    padding: 1px 1px;
-  }
-
-  .project-tag {
-    margin-top: 0.1rem;
-    margin-bottom: 1rem;
-  }
-
-  .project-block {
-    border-radius: 24px;
-    margin-bottom: 1.5rem;
-    padding: 0.5rem;
-    padding-bottom: 5px;
-  }
-
-  .project-block.wide {
-    padding: 0;
-  }
-
-  .carousel-wrapper {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  /* Stacking layout for mobile screens */
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .profile-photo {
-    max-width: 280px; /* Keeps image width consistent with original size */
-  }
-}
-
 /* Disable dragging on all images */
   img {
     -webkit-user-drag: none;
@@ -852,4 +777,89 @@ body {
 
 .image-modal.open img {
   transform: scale(1); /* Scales up into full size */
+}
+
+/*===========
+    mobile
+  ===========*/
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+    padding: 0 0.5rem;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: relative;
+    padding: 2.5rem;
+    top: 0;
+    border-top: none;
+    border-right: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 0;
+  }
+
+  /* Remove the extra top padding added on the brand link for mobile */
+  .brand-title a {
+    padding-top: 0;
+  }
+
+  .social-links {
+    position: relative;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+  }
+
+  .social-links::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+ 
+  .main-content {
+    margin: 1px 1px;
+    padding: 1px 1px;
+  }
+
+  .card {
+    position-area: center;
+}
+
+  .project-tag {
+    margin-top: 0.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-block {
+    border-radius: 24px;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    padding-bottom: 5px;
+  }
+
+  .project-block.wide {
+    padding: 0;
+  }
+
+  .carousel-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Stacking layout for mobile screens */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .profile-photo {
+    max-width: 280px; /* Keeps image width consistent with original size */
+  }
 }

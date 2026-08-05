@@ -61,11 +61,15 @@
     const modalImg = document.getElementById('modalImage');
     modalImg.src = imgSrc;
     modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
   }
 
   function closeModal() {
     const modal = document.getElementById('imageModal');
     modal.classList.remove('open');
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   }
 
   document.addEventListener('keydown', (e) => {
