@@ -367,6 +367,33 @@
       text-decoration: none;
     }
 
+    .card-footer-action {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+  /* Primary Accent Button */
+  .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
     .read-more:hover {
       text-decoration: underline;
     }
@@ -463,6 +490,12 @@
             <span class="card-tag">Environment</span>
             <h3 class="card-title"><a href="#">Borobudur Temple for real-time rendering</a></h3>
             <p class="card-excerpt">Modular wall pieces and relief carvings optimized for real-time rendering and low draw-call overhead.</p>
+          </div>
+
+          <div class="card-footer-action">
+            <a href="projects.html" class="btn-primary">
+              View All Projects &amp; Breakdown Renders &rarr;
+            </a>
           </div>
         </article>
 

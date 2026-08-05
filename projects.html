@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects Showcase | 3D Renders & Assets</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Shared Orange Hydejack Theme */
+    :root {
+      --bg-main: #0c0d10;
+      --bg-sidebar: #13151b;
+      --bg-card: #181b22;
+      --border-color: #272b36;
+      --text-primary: #f0f2f8;
+      --text-secondary: #949eb2;
+      --text-muted: #5e6678;
+      --accent: #ff7020;
+      --accent-hover: #ff8c42;
+      --font-heading: 'Space Grotesk', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* --- Sidebar --- */
+    .sidebar {
+      width: 340px;
+      background-color: var(--bg-sidebar);
+      border-right: 1px solid var(--border-color);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+      top: 0; bottom: 0; left: 0;
+      z-index: 100;
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .brand-title a { color: var(--text-primary); text-decoration: none; }
+    .brand-subtitle { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 2.5rem; }
+
+    .nav-links { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    .social-links { display: flex; gap: 1rem; font-size: 0.85rem; color: var(--text-muted); }
+    .social-links a { color: var(--text-muted); text-decoration: none; }
+    .social-links a:hover { color: var(--text-primary); }
+
+    /* --- Main Content --- */
+    .main-content {
+      margin-left: 340px;
+      flex: 1;
+      padding: 4rem 5rem;
+      max-width: 1050px;
+    }
+
+    .page-title {
+      font-family: var(--font-heading);
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-desc {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 3.5rem;
+      max-width: 650px;
+    }
+
+    /* --- Project Block --- */
+    .project-block {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .project-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+
+    .project-title {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .project-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    /* --- Carousel Container --- */
+    .carousel-wrapper {
+      position: relative;
+      margin-top: 1.5rem;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .carousel-track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Hide scrollbar Firefox */
+    }
+
+    .carousel-track::-webkit-scrollbar {
+      display: none; /* Hide scrollbar Chrome/Safari */
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      position: relative;
+      background-color: #000;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.75rem 1.25rem;
+      background: rgba(12, 13, 16, 0.85);
+      backdrop-filter: blur(4px);
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      font-family: var(--font-heading);
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* --- Arrow Navigation Controls --- */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(19, 21, 27, 0.8);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .carousel-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn-prev { left: 1rem; }
+    .btn-next { right: 1rem; }
+
+    /* Swipe Hint Badge */
+    .swipe-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      font-family: var(--font-heading);
+    }
+
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      .sidebar { width: 100%; position: relative; padding: 2rem; border-right: none; border-bottom: 1px solid var(--border-color); }
+      .main-content { margin-left: 0; padding: 2.5rem 1.5rem; }
+      .carousel-slide img { height: 320px; }
+      .carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div>
+      <h1 class="brand-title"><a href="home.html">PORTFOLIO</a></h1>
+      <p class="brand-subtitle">3D Artist & Asset Generalist</p>
+      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="projects.html" class="active">Project Renders</a></li>
+          <li><a href="about.html">About Me</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <footer class="social-links">
+      <a href="#">ArtStation</a> &bull; 
+      <a href="#">GitHub</a> &bull; 
+      <a href="about.html">Email</a>
+    </footer>
+  </aside>
+
+  <!-- MAIN GALLERY CONTENT -->
+  <main class="main-content">
+    <h1 class="page-title">Project Gallery</h1>
+    <p class="page-desc">Swipe through high-res renders, wireframe overlays, and texture passes for each asset.</p>
+
+    <!-- PROJECT 1: VINTAGE AUTOMOTIVE -->
+    <article class="project-block">
+      <div class="project-header">
+        <span class="project-tag">Hard Surface & Vehicle</span>
+        <h2 class="project-title">1948 Classic Coupe Restoration</h2>
+        <p class="project-desc">Subdivision body shell, high-density trim panels, and low-poly PBR bake for real-time engines.</p>
+      </div>
+
+      <div class="carousel-wrapper">
+        <button class="carousel-btn btn-prev" onclick="scrollCarousel(this, -1)">&larr;</button>
+        <button class="carousel-btn btn-next" onclick="scrollCarousel(this, 1)">&rarr;</button>
+
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <!-- Replace image URLs with your direct links -->
+            <img src="images/vehicle-render.png" alt="Beauty Pass Render">
+            <div class="slide-caption">01 / Beauty Pass — Unreal Engine 5 PBR Materials</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/vehicle-wireframe.png" alt="Wireframe Topology">
+            <div class="slide-caption">02 / Low-Poly Wireframe — 42k Triangles</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/vehicle-clay.png" alt="Clay Material Render">
+            <div class="slide-caption">03 / Clay Render — High-Poly Mesh Details</div>
+          </div>
+        </div>
+      </div>
+      <div class="swipe-hint">&larr; Swipe or use arrows to view breakdown &rarr;</div>
+    </article>
+
+    <!-- PROJECT 2: MODULAR ENVIRONMENT -->
+    <article class="project-block">
+      <div class="project-header">
+        <span class="project-tag">Environment Asset</span>
+        <h2 class="project-title">Historical Temple Relief Kit</h2>
+        <p class="project-desc">Modular stone wall structures, carved reliefs, and tileable material layering.</p>
+      </div>
+
+      <div class="carousel-wrapper">
+        <button class="carousel-btn btn-prev" onclick="scrollCarousel(this, -1)">&larr;</button>
+        <button class="carousel-btn btn-next" onclick="scrollCarousel(this, 1)">&rarr;</button>
+
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="images/temple-environment.png" alt="Environment Render">
+            <div class="slide-caption">01 / Hero Assembly — Modular Kit Setup</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="images/temple-uv.png" alt="UV & Texel Layout">
+            <div class="slide-caption">02 / Texel Density & UV Map Packing</div>
+          </div>
+        </div>
+      </div>
+      <div class="swipe-hint">&larr; Swipe or use arrows to view breakdown &rarr;</div>
+    </article>
+
+  </main>
+
+  <!-- CAROUSEL SCRIPT -->
+  <script>
+    function scrollCarousel(button, direction) {
+      const wrapper = button.parentElement;
+      const track = wrapper.querySelector('.carousel-track');
+      const slideWidth = track.querySelector('.carousel-slide').clientWidth;
+      
+      track.scrollBy({
+        left: direction * slideWidth,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+
+</body>
+</html>
