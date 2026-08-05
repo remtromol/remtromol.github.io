@@ -5,19 +5,22 @@ description: "Modular stone wall structures, carved reliefs, and tileable materi
 date: 2026-02-01
 order: 2
 images:
-  - src: "https://i.imgur.com/w0pdNbD.png"
+  - src: "image/portfolio/borob0.png"
     alt: "Environment Render"
     caption: "01 / Hero Assembly — Modular Kit Setup"
-  - src: "https://i.imgur.com/Ohp66HJ.jpeg"
+  - src: "image/portfolio/borob1.webp"
     alt: "UV & Texel Layout"
     caption: "02 / Texel Density & UV Map Packing"
-  - src: "https://i.imgur.com/MOAhTpO.png"
+  - src: "image/portfolio/borob2.webp"
     alt: "UV & Texel Layout"
     caption: "02 / Texel Density & UV Map Packing"
-  - src: "https://i.imgur.com/o7C6b5Z.jpeg"
+  - src: "image/portfolio/borob3.webp"
     alt: "UV & Texel Layout"
     caption: "02 / Texel Density & UV Map Packing"
-  - src: "https://i.imgur.com/KhkTmZA.jpeg"
+  - src: "image/portfolio/borob4.webp"
+    alt: "UV & Texel Layout"
+    caption: "02 / Texel Density & UV Map Packing"
+  - src: "image/portfolio/borob5.webp"
     alt: "UV & Texel Layout"
     caption: "02 / Texel Density & UV Map Packing"
 ---
