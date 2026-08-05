@@ -1,4 +1,4 @@
-# Art Portfolio site to Jekyll Workflow
+# My Art Portfolio Site Using Jekyll Workflow
 
 This repository was converted from static HTML pages into a Jekyll-powered site without changing the visual design.
 
@@ -58,4 +58,4 @@ Then open `http://127.0.0.1:4000`.
 
 ## Thanks to
 
-Jekyll - "https://jekyllrb.com"
+Jekyll - 'https://jekyllrb.com'
