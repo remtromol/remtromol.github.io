@@ -24,11 +24,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | Visuals & 3D Work</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | 3D Design & Hard Surface Art</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* Reset & Base Styles */
+    /* ==========================================================================
+       Hydejack-Inspired Dark & Bold Theme for 3D Artists
+       ========================================================================== */
+    :root {
+      --bg-main: #0c0d10;
+      --bg-sidebar: #13151b;
+      --bg-card: #181b22;
+      --border-color: #272b36;
+      
+      --text-primary: #f0f2f8;
+      --text-secondary: #949eb2;
+      --text-muted: #5e6678;
+      
+      --accent: #ff4757; /* Bold highlight color */
+      --accent-hover: #ff6b81;
+      
+      --font-heading: 'Space Grotesk', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -36,76 +59,138 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #0f0f11;
-      color: #e4e4e7;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
       line-height: 1.6;
-      padding: 0 1.5rem;
+      display: flex;
+      min-height: 100vh;
     }
 
-    a {
-      color: #38bdf8;
+    /* --- Sidebar (Hydejack Style Fixed Left Panel) --- */
+    .sidebar {
+      width: 340px;
+      background-color: var(--bg-sidebar);
+      border-right: 1px solid var(--border-color);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .brand-title a {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .brand-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-bottom: 2.5rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .social-links a {
+      color: var(--text-muted);
       text-decoration: none;
       transition: color 0.2s ease;
     }
 
-    a:hover {
-      color: #7dd3fc;
+    .social-links a:hover {
+      color: var(--text-primary);
     }
 
-    /* Layout Containers */
-    header, section, footer {
-      max-width: 960px;
-      margin: 0 auto;
+    /* --- Main Content Area --- */
+    .main-content {
+      margin-left: 340px;
+      flex: 1;
+      padding: 4rem 5rem;
+      max-width: 1100px;
     }
 
-    header {
-      padding: 4rem 0 2rem;
-      border-bottom: 1px solid #27272a;
+    .page-header {
+      margin-bottom: 4rem;
     }
 
-    h1 {
-      font-size: 2.5rem;
+    .page-header h1 {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
       font-weight: 700;
-      color: #ffffff;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
     }
 
-    .tagline {
-      font-size: 1.125rem;
-      color: #a1a1aa;
-      margin-top: 0.5rem;
+    .page-header p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 650px;
     }
 
-    .social-links {
-      margin-top: 1.5rem;
-      display: flex;
-      gap: 1.25rem;
-    }
-
-    .social-links a {
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-
-    /* Section Headers */
+    /* --- Section / Grid Layout --- */
     .section-title {
+      font-family: var(--font-heading);
       font-size: 1.5rem;
-      color: #ffffff;
-      margin: 3rem 0 1.5rem;
+      font-weight: 700;
       letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.75rem;
     }
 
-    /* Gallery Grid */
-    .grid {
+    .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
     }
 
     .card {
-      background: #18181b;
-      border: 1px solid #27272a;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       overflow: hidden;
       transition: transform 0.2s ease, border-color 0.2s ease;
@@ -113,133 +198,213 @@
 
     .card:hover {
       transform: translateY(-4px);
-      border-color: #3f3f46;
+      border-color: var(--accent);
     }
 
-    .card-img {
+    .card-thumb {
       width: 100%;
-      height: 200px;
-      background-color: #27272a;
+      height: 220px;
       object-fit: cover;
+      background-color: #000;
       display: block;
     }
 
     .card-body {
-      padding: 1.25rem;
+      padding: 1.5rem;
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      display: block;
     }
 
     .card-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #f4f4f5;
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
     }
 
-    .card-desc {
-      font-size: 0.875rem;
-      color: #a1a1aa;
-      margin-top: 0.5rem;
+    .card-title a {
+      color: var(--text-primary);
+      text-decoration: none;
     }
 
-    .tag {
-      display: inline-block;
-      background: #27272a;
-      color: #a1a1aa;
-      font-size: 0.75rem;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      margin-top: 0.75rem;
+    .card-excerpt {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
     }
 
-    /* About Section */
-    .about-text {
-      color: #a1a1aa;
-      max-width: 680px;
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
-    /* Footer */
-    footer {
-      padding: 4rem 0 2rem;
-      border-top: 1px solid #27272a;
-      margin-top: 4rem;
-      color: #71717a;
-      font-size: 0.875rem;
+    /* --- Article / Post List (Hydejack Blog Style) --- */
+    .post-list {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .post-item {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 2.5rem;
+    }
+
+    .post-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .post-title {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .post-title a {
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .post-title a:hover {
+      color: var(--accent);
+    }
+
+    .post-excerpt {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      max-width: 750px;
+    }
+
+    .read-more {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .read-more:hover {
+      text-decoration: underline;
+    }
+
+    /* --- Responsive Mobile Layout --- */
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: relative;
+        padding: 2rem;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 2.5rem 1.5rem;
+      }
+
+      .page-header h1 {
+        font-size: 2.5rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header / Intro -->
-  <header>
-    <h1>Your Name</h1>
-    <p class="tagline">3D Artist & Visual Designer — Focused on hard-surface assets, environmental spaces, and visual concept design.</p>
-    <div class="social-links">
-      <a href="https://artstation.com" target="_blank">ArtStation</a>
-      <a href="https://github.com" target="_blank">GitHub</a>
-      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-      <a href="mailto:your.email@example.com">Email Me</a>
+  <!-- FIXED LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div>
+      <h1 class="brand-title"><a href="#">PORTFOLIO</a></h1>
+      <p class="brand-subtitle">3D Generalist & Asset Designer</p>
+      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#projects" class="active">Selected Work</a></li>
+          <li><a href="#breakdowns">Process & Notes</a></li>
+          <li><a href="#about">About / Contact</a></li>
+        </ul>
+      </nav>
     </div>
-  </header>
 
-  <main>
-    <!-- Portfolio Gallery -->
-    <section>
-      <h2 class="section-title">Featured Projects</h2>
-      <div class="grid">
+    <footer class="social-links">
+      <a href="#">ArtStation</a> &bull; 
+      <a href="#">GitHub</a> &bull; 
+      <a href="#">Email</a>
+    </footer>
+  </aside>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="main-content">
+
+    <header class="page-header">
+      <h1>Selected Works & Process</h1>
+      <p>Hard-surface modeling, low-poly optimization, and texture breakdowns for real-time engines.</p>
+    </header>
+
+    <!-- 3D PROJECTS GRID -->
+    <section id="projects">
+      <h2 class="section-title">Featured Assets</h2>
+      
+      <div class="portfolio-grid">
         
-        <!-- Project 1 -->
         <article class="card">
-          <img src="https://via.placeholder.com/600x400/27272a/ffffff?text=Project+1" alt="Project Thumbnail" class="card-img">
+          <div class="card-thumb" style="background: #1e222a center/cover no-repeat url('https://via.placeholder.com/600x400/181b22/888888?text=1948+Ford+Deluxe');"></div>
           <div class="card-body">
-            <h3 class="card-title">Vintage Vehicle Model</h3>
-            <p class="card-desc">Low-poly optimized 3D mesh built for real-time engine rendering with custom PBR texturing.</p>
-            <span class="tag">Blender / Substance</span>
+            <span class="card-tag">Hard Surface</span>
+            <h3 class="card-title"><a href="#">Vintage Coupe Restoration</a></h3>
+            <p class="card-excerpt">High-density subdivision mesh converted into game-ready low-poly topology with custom PBR material passes.</p>
           </div>
         </article>
 
-        <!-- Project 2 -->
         <article class="card">
-          <img src="https://via.placeholder.com/600x400/27272a/ffffff?text=Project+2" alt="Project Thumbnail" class="card-img">
+          <div class="card-thumb" style="background: #1e222a center/cover no-repeat url('https://via.placeholder.com/600x400/181b22/888888?text=Temple+Environment');"></div>
           <div class="card-body">
-            <h3 class="card-title">Historical Environment</h3>
-            <p class="card-desc">Architectural recreation based on historical research and blueprint measurements.</p>
-            <span class="tag">Environment Design</span>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="card">
-          <img src="https://via.placeholder.com/600x400/27272a/ffffff?text=Project+3" alt="Project Thumbnail" class="card-img">
-          <div class="card-body">
-            <h3 class="card-title">Concept & Layout Work</h3>
-            <p class="card-desc">Visual composition study focused on lighting setups, camera focal points, and color grading.</p>
-            <span class="tag">Concept Art</span>
+            <span class="card-tag">Environment</span>
+            <h3 class="card-title"><a href="#">Historical Temple Modular Kit</a></h3>
+            <p class="card-excerpt">Modular wall pieces and relief carvings optimized for real-time rendering and low draw-call overhead.</p>
           </div>
         </article>
 
       </div>
     </section>
 
-    <!-- About Section -->
-    <section>
-      <h2 class="section-title">About</h2>
-      <p class="about-text">
-        I create 3D assets, environments, and visual layouts. My workflow prioritizes poly-count efficiency, clean UV unwrapping, and accurate real-world scale modeling suitable for interactive media, game environments, and production pipelines.
-      </p>
-    </section>
-  </main>
+    <!-- WORKFLOW BREAKDOWNS (Hydejack Style) -->
+    <section id="breakdowns">
+      <h2 class="section-title">Technical Notes & Articles</h2>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Your Name. All rights reserved.</p>
-    <p>Hosted on GitHub Pages</p>
-  </footer>
+      <div class="post-list">
+        
+        <article class="post-item">
+          <div class="post-meta">July 2026 &bull; Optimization Workflow</div>
+          <h3 class="post-title"><a href="#">UV Unwrapping & Texel Density for Complex Vehicles</a></h3>
+          <p class="post-excerpt">How I structure multi-tile UV maps for classic body shell panels without wasting texture resolution or creating visible seam artifacts in Unreal Engine.</p>
+          <a href="#" class="read-more">Read Breakdown &rarr;</a>
+        </article>
+
+        <article class="post-item">
+          <div class="post-meta">May 2026 &bull; Shader Graph</div>
+          <h3 class="post-title"><a href="#">Creating Procedural Rust and Layered Enamel Paint</a></h3>
+          <p class="post-excerpt">A look into masking wear-and-tear edges using curvature maps and procedural noise for believable vintage patina.</p>
+          <a href="#" class="read-more">Read Breakdown &rarr;</a>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
 
 </body>
 </html>
