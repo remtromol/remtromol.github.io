@@ -169,12 +169,21 @@
       padding-bottom: 0.5rem;
       border-bottom: 1px solid var(--border-color);
     }
-
+    
+    /* Mobile default: Single full-width column */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1.5rem;
     }
+    
+    /* Tablet & Desktop: Auto-fitting grid */
+    @media (min-width: 600px) {
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+    }
+
 
     .skill-card {
       backdrop-filter: blur(8px);
