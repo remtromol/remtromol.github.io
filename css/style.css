@@ -219,7 +219,6 @@ body {
 }
 
 .btn-secondary:hover {
-  background-color: var(--bg-card);
   border-color: var(--accent);
   color: var(--accent);
 }
@@ -512,7 +511,7 @@ body {
   margin-bottom: 3.5rem;
   max-width: 650px;
 }
-
+ 
 .project-block {
   backdrop-filter: blur(8px);
   border: 1px solid var(--border-color);
@@ -520,11 +519,11 @@ body {
   padding: 2rem;
   margin-bottom: 4rem;
 }
-
+ 
 .project-header {
   margin-bottom: 1.5rem;
 }
-
+ 
 .project-tag {
   font-size: 0.8rem;
   font-weight: 700;
@@ -534,19 +533,19 @@ body {
   margin-bottom: 0.25rem;
   display: block;
 }
-
+ 
 .project-title {
   font-family: var(--font-heading);
   font-size: 1.8rem;
   font-weight: 700;
 }
-
+ 
 .project-desc {
   color: var(--text-secondary);
   font-size: 0.95rem;
   margin-top: 0.5rem;
 }
-
+ 
 /* --- Carousel --- */
 .carousel-wrapper {
   position: relative;
@@ -555,7 +554,7 @@ body {
   overflow: hidden;
   border: 1px solid var(--border-color);
 }
-
+ 
 .carousel-track {
   display: flex;
   overflow-x: auto;
@@ -564,72 +563,117 @@ body {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
-
+ 
 .carousel-track::-webkit-scrollbar {
   display: none;
 }
-
+ 
 .carousel-slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
   position: relative;
   background-color: rgba(0, 0, 0, 0.1);
 }
-
+ 
 .carousel-slide img {
   width: 100%;
   height: 480px;
   object-fit: contain;
   display: block;
 }
-
+ 
 .slide-caption {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0.75rem 1.25rem;
-  background: rgba(12, 13, 16, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0.75rem 0.6rem 1.25rem;
+  background: rgba(12, 13, 16, 0.55);
   backdrop-filter: blur(4px);
   color: var(--text-primary);
   font-size: 0.85rem;
   font-family: var(--font-heading);
   border-top: 1px solid var(--border-color);
 }
-
-.carousel-btn {
+ 
+/* Text area: takes remaining space, never pushes into the arrows */
+.caption-text-wrap {
+  flex: 1 1 auto;
+  min-width: 0; /* required for flex children to actually shrink/clip */
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+ 
+.caption-text {
+  display: inline-block;
+}
+ 
+/* Applied via JS only when the text actually overflows its container */
+.caption-text-wrap.marquee .caption-text {
+  animation: marquee-scroll 9s linear infinite;
+  padding-right: 3rem;
+}
+ 
+.caption-text-wrap.marquee::before,
+.caption-text-wrap.marquee::after {
+  content: "";
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(19, 21, 27, 0.3);
+  top: 0;
+  bottom: 0;
+  width: 16px;
+  z-index: 1;
+  pointer-events: none;
+}
+ 
+.caption-text-wrap.marquee::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(12, 13, 16, 0.55), transparent);
+}
+ 
+.caption-text-wrap.marquee::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(12, 13, 16, 0.55), transparent);
+}
+ 
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+ 
+/* Nav arrows: now docked inside the caption bar, right side */
+.carousel-nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+ 
+.carousel-btn {
+  position: static;
+  background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
-  width: 42px;
-  height: 42px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1;
   transition: all 0.2s ease;
-  z-index: 10;
 }
-
+ 
 .carousel-btn:hover {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
 }
-
-.btn-prev {
-  left: 1rem;
-}
-
-.btn-next {
-  right: 1rem;
-}
-
+ 
 .swipe-hint {
   display: inline-flex;
   align-items: center;
@@ -639,7 +683,7 @@ body {
   margin-top: 0.75rem;
   font-family: var(--font-heading);
 }
-
+ 
 /* =========================================================
    SHARED RESPONSIVE BREAKPOINT (tablet / mobile layout)
    ========================================================= */
