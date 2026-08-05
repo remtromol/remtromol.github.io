@@ -7,270 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* Shared Orange Hydejack Theme */
-    :root {
-      background: url('https://i.imgur.com/7jx3IBQ.png')no-repeat center;
-      background-attachment: fixed;
-      min-height: 100vh;
-      background-size: cover; 
-      --bg-card: #181b22;
-      --border-color: rgba(255,255,255,0.3);
-           
-      --text-primary: #dedede;
-      --text-secondary: #dedede;
-      --text-muted: #878787;
-      
-      --accent: #ff7020; /* Vibrant Dark-Theme Orange */
-      --accent-hover: #ff8c42;
-      
-      --font-heading: 'Space Grotesk', -apple-system, sans-serif;
-      --font-body: 'Inter', -apple-system, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--bg-main);
-      color: var(--text-primary);
-      font-family: var(--font-body);
-      line-height: 1.6;
-      display: flex;
-      min-height: 100vh;
-    }
-
-    /* --- Sidebar (Hydejack Style Fixed Left Panel) --- */
-    .sidebar {
-      width: 340px;
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,255,255, 0.3);
-      border-right: 1px solid rgba(255,255,255, 0.3);
-      padding: 3rem 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 100;  
-    }
-    
-    /* 2. MOBILE OVERRIDES (Screens 768px wide or smaller) */
-      @media (max-width: 768px) {
-    .sidebar {
-      position: relative;
-      width: 100%;
-      height: auto;
-      padding: 2rem 1.5rem 1rem 1.5rem;
-    }
-  
-    .social-links {
-      position: relative; /* Needed to anchor the pseudo-element line */
-      margin-top: 2.5rem; 
-      padding-top: 1.5rem; /* Space between the custom line and the links */
-    }
-  
-    /* Custom short divider line */
-    .social-links::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;           /* Aligns the line to the left */
-      width: 200px;       /* Set this to whatever width you want (e.g., 50px, 80px, 20%) */
-      height: 1px;       /* The line thickness */
-      background-color: rgba(255, 255, 255, 0.3); /* Line color */
-    }
-  }
-
-    .brand-title {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-    }
-
-    .brand-title a { color: var(--text-primary); text-decoration: none; }
-    .brand-subtitle { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 2.5rem; }
-
-    .nav-links { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
-    .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: color 0.2s ease;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-
-    .social-links { display: flex; gap: 1rem; font-size: 0.85rem; color: var(--text-muted); }
-    .social-links a { color: var(--text-muted); text-decoration: none; }
-    .social-links a:hover { color: var(--text-primary); }
-
-    /* --- Main Content --- */
-    .main-content {
-      margin-left: 340px;
-      flex: 1;
-      padding: 4rem 5rem;
-      max-width: 1050px;
-    }
-
-    .page-title {
-      font-family: var(--font-heading);
-      font-size: 3.2rem;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      margin-bottom: 0.5rem;
-    }
-
-    .page-desc {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      margin-bottom: 3.5rem;
-      max-width: 650px;
-    }
-
-    /* --- Project Block --- */
-    .project-block {
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 4rem;
-    }
-
-    .project-header {
-      margin-bottom: 1.5rem;
-    }
-
-    .project-tag {
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      margin-bottom: 0.25rem;
-      display: block;
-    }
-
-    .project-title {
-      font-family: var(--font-heading);
-      font-size: 1.8rem;
-      font-weight: 700;
-    }
-
-    .project-desc {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-top: 0.5rem;
-    }
-
-    /* --- Carousel Container --- */
-    .carousel-wrapper {
-      position: relative;
-      margin-top: 1.5rem;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-    }
-
-    .carousel-track {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; /* Hide scrollbar Firefox */
-    }
-
-    .carousel-track::-webkit-scrollbar {
-      display: none; /* Hide scrollbar Chrome/Safari */
-    }
-
-    .carousel-slide {
-      flex: 0 0 100%;
-      scroll-snap-align: start;
-      position: relative;
-      background-color: rgba(0,0,0,0.1);
-    }
-
-    .carousel-slide img {
-      width: 100%;
-      height: 480px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .slide-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 0.75rem 1.25rem;
-      background: rgba(12, 13, 16, 0.3);
-      backdrop-filter: blur(4px);
-      color: var(--text-primary);
-      font-size: 0.85rem;
-      font-family: var(--font-heading);
-      border-top: 1px solid var(--border-color);
-    }
-
-    /* --- Arrow Navigation Controls --- */
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(19, 21, 27, 0.3);
-      border: 1px solid var(--border-color);
-      color: var(--text-primary);
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      transition: all 0.2s ease;
-      z-index: 10;
-    }
-
-    .carousel-btn:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-    }
-
-    .btn-prev { left: 1rem; }
-    .btn-next { right: 1rem; }
-
-    /* Swipe Hint Badge */
-    .swipe-hint {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 0.75rem;
-      font-family: var(--font-heading);
-    }
-
-    @media (max-width: 900px) {
-      body { flex-direction: column; }
-      .sidebar { width: 100%; position: relative; padding: 2rem; border-right: none; border-bottom: 1px solid var(--border-color); }
-      .main-content { margin-left: 0; padding: 2.5rem 1.5rem; }
-      .carousel-slide img { height: 320px; }
-      .carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="darkreader-lock">
+  <!-- Wrapper background -->
+  <div class="bg-wrapper">
+    <img src="https://i.imgur.com/7jx3IBQ.png" alt="Background" class="bg-image">
+  </div>
 </head>
 <body>
 
@@ -278,8 +20,8 @@
   <aside class="sidebar">
     <div>
       <h1 class="brand-title"><a href="/home">PORTFOLIO</a></h1>
-      <p class="brand-subtitle">3D Artist & Asset Generalist</p>
-      
+      <p class="brand-subtitle">3D Artist &amp; Asset Generalist</p>
+
       <nav>
         <ul class="nav-links">
           <li><a href="/home">Home</a></li>
@@ -288,17 +30,22 @@
         </ul>
       </nav>
     </div>
+    <footer class="social-links">
+      <a href="https://www.artstation.com/remtromol">ArtStation</a> &bull;
+      <a href="https://github.com/remtromol">GitHub</a> &bull;
+      <a href="mailto:nfahri@live.com">Email</a>
+    </footer>
   </aside>
 
   <!-- MAIN GALLERY CONTENT -->
-  <main class="main-content">
+  <main class="main-content gallery">
     <h1 class="page-title">Project Gallery</h1>
     <p class="page-desc">Swipe through high-res renders, wireframe overlays, and texture passes for each asset.</p>
 
     <!-- PROJECT 1: VINTAGE AUTOMOTIVE -->
     <article class="project-block">
       <div class="project-header">
-        <span class="project-tag">Hard Surface & Vehicle</span>
+        <span class="project-tag">Hard Surface &amp; Vehicle</span>
         <h2 class="project-title">Datsun 1200 pick-up</h2>
         <p class="project-desc">Subdivision body shell, high-density trim panels.</p>
       </div>
@@ -309,7 +56,6 @@
 
         <div class="carousel-track">
           <div class="carousel-slide">
-            <!-- Replace image URLs with your direct links -->
             <img src="https://i.imgur.com/xq3skZd.png" alt="Front side view">
             <div class="slide-caption">Front View Cycles Render</div>
           </div>
@@ -345,19 +91,19 @@
           </div>
           <div class="carousel-slide">
             <img src="https://i.imgur.com/Ohp66HJ.jpeg" alt="UV & Texel Layout">
-            <div class="slide-caption">02 / Texel Density & UV Map Packing</div>
+            <div class="slide-caption">02 / Texel Density &amp; UV Map Packing</div>
           </div>
-            <div class="carousel-slide">
+          <div class="carousel-slide">
             <img src="https://i.imgur.com/MOAhTpO.png" alt="UV & Texel Layout">
-            <div class="slide-caption">02 / Texel Density & UV Map Packing</div>
+            <div class="slide-caption">02 / Texel Density &amp; UV Map Packing</div>
           </div>
-              <div class="carousel-slide">
+          <div class="carousel-slide">
             <img src="https://i.imgur.com/o7C6b5Z.jpeg" alt="UV & Texel Layout">
-            <div class="slide-caption">02 / Texel Density & UV Map Packing</div>
-              </div>
-            <div class="carousel-slide">
+            <div class="slide-caption">02 / Texel Density &amp; UV Map Packing</div>
+          </div>
+          <div class="carousel-slide">
             <img src="https://i.imgur.com/KhkTmZA.jpeg" alt="UV & Texel Layout">
-            <div class="slide-caption">02 / Texel Density & UV Map Packing</div>
+            <div class="slide-caption">02 / Texel Density &amp; UV Map Packing</div>
           </div>
         </div>
       </div>
@@ -372,7 +118,7 @@
       const wrapper = button.parentElement;
       const track = wrapper.querySelector('.carousel-track');
       const slideWidth = track.querySelector('.carousel-slide').clientWidth;
-      
+
       track.scrollBy({
         left: direction * slideWidth,
         behavior: 'smooth'

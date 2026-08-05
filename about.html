@@ -1,296 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About | Naufal Fakhri</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      background: url('https://i.imgur.com/7jx3IBQ.png')no-repeat center;
-      background-attachment: fixed;
-      min-height: 100vh;
-      background-size: cover; 
-      --bg-card: #181b22;
-      --border-color: rgba(255,255,255,0.3);
-           
-      --text-primary: #dedede;
-      --text-secondary: #dedede;
-      --text-muted: #878787;
-      
-      --accent: #ff7020; /* Vibrant Dark-Theme Orange */
-      --accent-hover: #ff8c42;
-      
-      --font-heading: 'Space Grotesk', -apple-system, sans-serif;
-      --font-body: 'Inter', -apple-system, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--bg-main);
-      color: var(--text-primary);
-      font-family: var(--font-body);
-      line-height: 1.6;
-      display: flex;
-      min-height: 100vh;
-    }
-
-    /* --- Sidebar (Hydejack Style Fixed Left Panel) --- */
-    .sidebar {
-      width: 340px;
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,255,255, 0.3);
-      border-right: 1px solid rgba(255,255,255, 0.3);
-      padding: 3rem 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 100;  
-    }
-    
-    /* 2. MOBILE OVERRIDES (Screens 768px wide or smaller) */
-      @media (max-width: 768px) {
-    .sidebar {
-      position: relative;
-      width: 100%;
-      height: auto;
-      padding: 2rem 1.5rem 1rem 1.5rem;
-    }
-  
-    .social-links {
-      position: relative; /* Needed to anchor the pseudo-element line */
-      margin-top: 2.5rem; 
-      padding-top: 1.5rem; /* Space between the custom line and the links */
-    }
-  
-    /* Custom short divider line */
-    .social-links::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;           /* Aligns the line to the left */
-      width: 200px;       /* Set this to whatever width you want (e.g., 50px, 80px, 20%) */
-      height: 1px;       /* The line thickness */
-      background-color: rgba(255, 255, 255, 0.3); /* Line color */
-    }
-      }
-    .brand-title {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-    }
-
-    .brand-title a { color: var(--text-primary); text-decoration: none; }
-    .brand-subtitle { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 2.5rem; }
-
-    .nav-links { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
-    .nav-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: color 0.2s ease;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-
-    .social-links { display: flex; gap: 1rem; font-size: 0.85rem; color: var(--text-muted); }
-    .social-links a { color: var(--text-muted); text-decoration: none; }
-    .social-links a:hover { color: var(--text-primary); }
-
-    /* Main Content Area */
-    .main-content {
-      margin-left: 340px;
-      flex: 1;
-      padding: 4rem 5rem;
-      max-width: 1000px;
-    }
-
-    .page-title {
-      font-family: var(--font-heading);
-      font-size: 3.2rem;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      margin-bottom: 2rem;
-    }
-
-    /* Profile / Layout Styling */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 3rem;
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 4rem;
-      background-color: transparent;
-    }
-
-    .profile-photo {
-      width: 100%;
-      height: 340px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-      background-color: var(--bg-card);
-    }
-
-    .bio-text p {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      margin-bottom: 1.5rem;
-      line-height: 1.7;
-    }
-
-    .bio-text strong { color: var(--text-primary); }
-
-    /* Skills Grid */
-    .section-heading {
-      font-family: var(--font-heading);
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin: 3rem 0 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border-color);
-    }
-    
-    /* Mobile default: Single full-width column */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    
-    /* Tablet & Desktop: Auto-fitting grid */
-    @media (min-width: 600px) {
-      .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      }
-    }
-
-
-    .skill-card {
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--border-color);
-      padding: 1.5rem;
-      border-radius: 12px;
-    }
-
-    .skill-card h3 {
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .skill-card ul {
-      list-style: none;
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-
-    @media (max-width: 900px) {
-      body { flex-direction: column; }
-      .sidebar { width: 100%; position: relative; padding: 2rem; border-right: none; border-bottom: 1px solid var(--border-color); }
-      .main-content { margin-left: 0; padding: 2.5rem 1.5rem; }
-      .about-grid { grid-template-columns: 1fr; }
-      .profile-photo { height: 280px; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About | Naufal Fakhri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<meta name="darkreader-lock">
+<!-- Wrapper background -->
+<div class="bg-wrapper">
+<img src="https://i.imgur.com/7jx3IBQ.png" alt="Background" class="bg-image">
+</div>
 </head>
 <body>
 
-  <!-- FIXED SIDEBAR -->
-  <aside class="sidebar">
-    <div>
-      <h1 class="brand-title"><a href="/home">PORTFOLIO</a></h1>
-      <p class="brand-subtitle">3D Artist & Asset Generalist</p>
-      
-      <nav>
-        <ul class="nav-links">
-          <li><a href="/home">Home</a></li>
-          <li><a href="/projects">Projects Gallery</a></li>
-          <li><a href="/about" class="active">About Me</a></li>
-        </ul>
-      </nav>
-    </div>
+<!-- FIXED SIDEBAR -->
+<aside class="sidebar">
+<div>
+<h1 class="brand-title"><a href="/home">PORTFOLIO</a></h1>
+<p class="brand-subtitle">3D Artist &amp; Asset Generalist</p>
+<nav>
+<ul class="nav-links">
+<li><a href="/home">Home</a></li>
+<li><a href="/projects">Projects Gallery</a></li>
+<li><a href="/about" class="active">About Me</a></li>
+</ul>
+</nav>
+</div>
+<footer class="social-links">
+<a href="https://www.artstation.com/remtromol">ArtStation</a> &bull;
+<a href="https://github.com/remtromol">GitHub</a> &bull;
+<a href="mailto:nfahri@live.com">Email</a>
+</footer>
+</aside>
 
-    <footer class="social-links">
-      <a href="https://www.artstation.com/remtromol">ArtStation</a> &bull; 
-      <a href="https://github.com/remtromol">GitHub</a> &bull; 
-      <a href="mailto:nfahri@live.com">Email</a>
-    </footer>
-  </aside>
+<!-- MAIN ABOUT CONTENT -->
+<main class="main-content narrow">
+<h1 class="page-title">About Me</h1>
 
-  <!-- MAIN ABOUT CONTENT -->
-  <main class="main-content">
-    <h1 class="page-title">About Me</h1>
+<div class="about-grid">
+<img src="https://i.imgur.com/EeW9E6r.jpeg" alt="Profile Photo" class="profile-photo" />
+<div class="bio-text">
+<p>
+Hello! I am a <strong>3D Artist &amp; Generalist</strong> focusing on hard-surface modeling, low-poly optimization for game engines, and vintage automotive/architectural reconstructions.
+</p>
+<p>
+My background spans visual communication and asset production, bridging the gap between artistic detail and technical pipeline efficiency. Whether crafting complex mechanical components or modular environment kits, I focus on clean topology, optimized Texel density, and crisp PBR texturing.
+</p>
+</div>
+</div>
 
-    <div class="about-grid">
-      <img src="https://i.imgur.com/EeW9E6r.jpeg" alt="Profile Photo" class="profile-photo" />
+<h2 class="section-heading">Technical Proficiency</h2>
+<div class="skills-grid">
 
-      <div class="bio-text">
-        <p>
-          Hello! I am a <strong>3D Artist & Generalist</strong> focusing on hard-surface modeling, low-poly optimization for game engines, and vintage automotive/architectural reconstructions.
-        </p>
-        <p>
-          My background spans visual communication and asset production, bridging the gap between artistic detail and technical pipeline efficiency. Whether crafting complex mechanical components or modular environment kits, I focus on clean topology, optimized Texel density, and crisp PBR texturing.
-        </p>
-      </div>
-    </div>
+<div class="skill-card">
+<h3>Modeling &amp; Sculpting</h3>
+<ul>
+<li>Blender</li>
+<li>Substance 3D Painter</li>
+<li>Hard-Surface Workflows</li>
+<li>Subdivision Surface</li>
+</ul>
+</div>
 
-    <h2 class="section-heading">Technical Proficiency</h2>
+<div class="skill-card">
+<h3>Optimization &amp; Real-Time</h3>
+<ul>
+<li>Game-Ready Topology</li>
+<li>UV Unwrapping &amp; Packing</li>
+<li>Normal Map Baking</li>
+<li>Unreal Engine / Unity</li>
+</ul>
+</div>
 
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h3>Modeling & Sculpting</h3>
-        <ul>
-          <li>Blender</li>
-          <li>Substance 3D Painter</li>
-          <li>Hard-Surface Workflows</li>
-          <li>Subdivision Surface</li>
-        </ul>
-      </div>
+<div class="skill-card">
+<h3>Design &amp; Layout</h3>
+<ul>
+<li>Visual Communication (DKV)</li>
+<li>PBR Material Layering</li>
+<li>Modular Kit Planning</li>
+<li>Concept Visualization</li>
+</ul>
+</div>
 
-      <div class="skill-card">
-        <h3>Optimization & Real-Time</h3>
-        <ul>
-          <li>Game-Ready Topology</li>
-          <li>UV Unwrapping & Packing</li>
-          <li>Normal Map Baking</li>
-          <li>Unreal Engine / Unity</li>
-        </ul>
-      </div>
-
-      <div class="skill-card">
-        <h3>Design & Layout</h3>
-        <ul>
-          <li>Visual Communication (DKV)</li>
-          <li>PBR Material Layering</li>
-          <li>Modular Kit Planning</li>
-          <li>Concept Visualization</li>
-        </ul>
-      </div>
-    </div>
-
-  </main>
+</div>
+</main>
 
 </body>
 </html>
