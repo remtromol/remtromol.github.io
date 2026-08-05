@@ -1,90 +1,62 @@
-/* =========================================================
-   REMTROMOL PORTFOLIO — SHARED STYLESHEET
-   ========================================================= */
-
-@view-transition {
-  navigation: auto;
-}
-
 :root {
-  --bg-main: #00000026; /* fallback color shown if the bg image fails/hasn't loaded */
+  --bg-main: #00000026;
   --bg-card: #00000026;
+  --bg-dark: #00000099;
   --border-color: rgba(255, 255, 255, 0.3);
   --text-primary: #ffffff;
   --text-secondary: #ffffff;
   --text-muted: #878787;
-  --accent: #ff7020; /* Vibrant Dark-Theme Orange */
+  --accent: #ff7020;
   --accent-hover: #ff8c42;
   --font-heading: 'Old Standard TT', serif;
   --font-body: 'Inter', -apple-system, sans-serif;
 }
 
-.bg-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  overflow: hidden;
-}
-
-.bg-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background-color: #000000;
-  transform: scale(1.1);
-  transform-origin: center;
-}
-
-/* ---------- RESET ---------- */
-* {
+/*RESET*/
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  background-color: var(--bg-main);
   color: var(--text-primary);
   font-family: var(--font-body);
   line-height: 1.6;
   min-height: 100vh;
+  display: flex;
   flex-direction: column;
   padding: 0 0.5rem;
+  position: relative;
+  isolation: isolate;
 }
 
-@keyframes slide-out-right {
-  from {
-    transform: translateX(0%);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%);
-    opacity: 0.8;
-  }
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-@keyframes slide-in-right {
-  from {
-    transform: translateX(100%);
-    opacity: 0.8;
-  }
-  to {
-    transform: translateX(0%);
-    opacity: 1;
-  }
+.bg-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  z-index: -1;
+  pointer-events: none;
 }
 
-::view-transition-old(main-content) {
-  animation: 350ms cubic-bezier(0.4, 0, 0.2, 1) both slide-out-right;
+.bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #00000035;
+  transform: scale(1.1);
+  transform-origin: center;
 }
-
-::view-transition-new(main-content) {
-  animation: 350ms cubic-bezier(0.4, 0, 0.2, 1) both slide-in-right;
-}
-
 
 a,
 a:link,
@@ -93,12 +65,7 @@ a:visited {
   text-decoration: none;
 }
 
-a:hover,
-a:focus {
-  text-decoration: underline;
-}
-
-/* ---------- SIDEBAR (mobile-first) ---------- */
+/*SIDEBAR(mobile-first)*/
 .sidebar {
   width: 100%;
   backdrop-filter: blur(8px);
@@ -177,16 +144,16 @@ a:focus {
   color: var(--text-primary);
 }
 
-/* ---------- MAIN CONTENT AREA (mobile-first) ---------- */
+/*MAIN CONTENT AREA (mobile-first)*/
 .main-content {
   flex: 1;
   padding: 0.25rem;
   margin: 0;
   max-width: 100%;
+  z-index: 2;
   view-transition-name: main-content;
 }
 
-/* Narrow content modifier (about, gallery, blog) */
 .main-content.narrow,
 .main-content.gallery,
 .main-content.blog {
@@ -194,11 +161,10 @@ a:focus {
 }
 
 .blog-post {
-  background-color: rgba(0, 0, 0, 0.35);
+  background-color: var(--bg-dark);
   border: 1px solid var(--border-color);
   border-radius: 24px;
   padding: 0rem 2.5rem;
-  backdrop-filter: blur(8px);
   margin: 0rem auto 4rem auto;
 }
 
@@ -207,6 +173,7 @@ a:focus {
 }
 
 .blog-back-button {
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.95rem;
@@ -215,7 +182,7 @@ a:focus {
   border: 1px solid var(--border-color);
   border-radius: 18px;
   padding: 0.75rem 1.25rem;
-  background: rgba(255, 255, 255, 0.04);
+  background-color: var(--bg-dark);
   transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
@@ -292,20 +259,19 @@ a:focus {
 
 .post-item {
   display: flex;
-  flex-direction: column;   /* Stacked layout for small screens */
+  flex-direction: column;
   align-items: stretch;
   gap: 1.5rem;
   padding: 1.5rem;
   border: 1px solid var(--border-color);
   border-radius: 16px;
-  background: #00000026;
+  background-color: var(--bg-dark);
   backdrop-filter: blur(8px);
 }
 
 a.post-item {
   text-decoration: none;
-  background: #00000026;
-  backdrop-filter: blur(8px);
+  background-color: var(--bg-dark);
 }
 
 .post-thumbnail-wrapper {
@@ -320,8 +286,7 @@ a.post-item {
   object-position: center;
   display: block;
 }
-
-/* ---------- BUTTONS ---------- */
+/*BUTTONS*/
 .btn {
   display: inline-block;
   font-family: var(--font-heading);
@@ -367,10 +332,7 @@ a.post-item {
   border-color: var(--accent);
   color: var(--accent);
 }
-
-/* =========================================================
-   HOME PAGE
-   ========================================================= */
+/*HOME PAGE*/
 .intro-hero {
   margin: 0.1rem 1rem 8rem 1rem;
   padding-bottom: 1em;
@@ -416,7 +378,6 @@ a.post-item {
 }
 
 .badge {
-  backdrop-filter: blur(8px);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   padding: 0.4rem 0.9rem;
@@ -453,6 +414,7 @@ a.post-item {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
   overflow: hidden;
+  will-change: transform;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
@@ -496,7 +458,7 @@ a.post-item {
   inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: normal;
+  justify-content: flex-start;
   padding: 14% 1.5rem;
   background: rgba(0, 0, 0, 0.35);
   opacity: 0;
@@ -589,9 +551,7 @@ a.post-item {
   border-top: 1px solid var(--border-color);
 }
 
-/* =========================================================
-   ABOUT PAGE
-   ========================================================= */
+/*ABOUT PAGE*/
 .page-title {
   font-family: var(--font-heading);
   font-size: 3.2rem;
@@ -601,11 +561,11 @@ a.post-item {
 }
 
 .about-grid {
-  display: grid;
-  grid: repeat(2, 1fr);
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 1.5rem;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(2px);
   border: 1px solid var(--border-color);
   border-radius: 24px;
   padding: 2rem;
@@ -614,9 +574,9 @@ a.post-item {
 }
 
 .profile-photo {
-  width: clamp(320px, 75%, 200px);
+  width: clamp(200px, 75%, 320px);
   height: auto;
-  object-fit: auto;
+  object-fit: cover;
   border-radius: 12px;
   border: 1px solid var(--border-color);
   background-color: var(--bg-card);
@@ -664,11 +624,7 @@ a.post-item {
   font-size: 0.95rem;
   line-height: 1.8;
 }
-
-/* =========================================================
-   PROJECTS PAGE
-   ========================================================= */
-   
+/* PROJECTS PAGE */
 .page-desc {
   font-size: 1.1rem;
   color: var(--text-secondary);
@@ -678,14 +634,12 @@ a.post-item {
 }
  
 .project-block {
-  backdrop-filter: blur(8px);
   border: 1px solid var(--border-color);
   border-radius: 24px;
   padding: 0.5rem 0.5rem 5px 0.5rem;
   margin-bottom: 1.5rem;
 }
 
-/*Wide / non-cropped project modifier*/
 .project-block.wide {
   max-width: 1600px;
   margin: 0 auto;
@@ -693,16 +647,13 @@ a.post-item {
   padding-right: 2.5rem;
 }
 
-/* Optional: apply non-cropping images inside project blocks */
 .project-block img {
   width: 100%;
   height: auto;
   border-radius: 12px;
   object-fit: contain;
   object-position: center;
-  background-color: var(--bg-card);
 }
-
 
 .project-header {
   margin-bottom: 1rem;
@@ -731,13 +682,12 @@ a.post-item {
   font-size: 0.75rem;
   letter-spacing: 0.02em;
 }
- 
-/* --- Carousel --- */
+
 .carousel-wrapper {
   position: relative;
   width: 100%;
-  margin: 0;
-  margin-bottom: 0.25rem;
+  height: auto;
+  margin: 0 0 0.25rem 0;
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid var(--border-color);
@@ -786,11 +736,6 @@ a.post-item {
   background-color: var(--bg-card);
   display: block;
 }
-
-/* Ensure wrapper doesn't clip content — let images size the wrapper */
-.carousel-wrapper {
-  height: auto !important;
-}
  
 .slide-caption {
   position: absolute;
@@ -820,17 +765,16 @@ a.post-item {
   white-space: nowrap;
   position: relative;
 }
- 
+
 .caption-text {
   display: inline-block;
 }
- 
-/* Applied via JS only when the text actually overflows its container */
+
 .caption-text-wrap.marquee .caption-text {
   animation: marquee-scroll 9s linear infinite;
   padding-right: 3rem;
 }
- 
+
 .caption-text-wrap.marquee::before,
 .caption-text-wrap.marquee::after {
   content: "";
@@ -842,13 +786,11 @@ a.post-item {
   pointer-events: none;
 }
 
- 
 @keyframes marquee-scroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
- 
-/*nav buttons inside carousel*/
+
 .carousel-nav {
   position: absolute;
   bottom: 0;
@@ -878,8 +820,7 @@ a.post-item {
   justify-content: center;
   transition: all 0.2s ease;
 }
- 
-/*SVG chevrons*/
+
 .carousel-btn svg {
   width: 14px;
   height: 14px;
@@ -897,14 +838,13 @@ a.post-item {
   color: #fff;
 }
 
-/* Disable dragging on all images */
 img {
+  max-width: 100%;
   -webkit-user-drag: none;
   user-select: none;
   cursor: pointer;
 }
 
-/* Lightbox Modal Overlay */
 .image-modal {
   position: fixed;
   inset: 0;
@@ -921,7 +861,6 @@ img {
   transition: opacity 0.3s ease, visibility 0.5s ease;
 }
 
-/* Close Button (X) */
 .close-btn {
   position: absolute;
   top: 20px;
@@ -953,13 +892,10 @@ img {
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   cursor: default;
-
-  /* Start smaller for the pop-out effect */
   transform: scale(0.85);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Open State (Triggered via JS) */
 .image-modal.open {
   opacity: 1;
   visibility: visible;
@@ -967,10 +903,9 @@ img {
 }
 
 .image-modal.open img {
-  transform: scale(1); /* Scales up into full size */
+  transform: scale(1); 
 }
 
-/* Footer placement inside main-content */
 .site-footer {
   padding-top: 1rem;
   text-align: center;
@@ -983,6 +918,7 @@ img {
   justify-content: center;
 }
 
+/* ======== DESKTOP ======== */
 @media (min-width: 900px) {
   body {
     padding: 0;
@@ -1010,11 +946,6 @@ img {
     justify-content: center;
     margin-left: 250px;
     padding: 5%;
-  }
-
-  .main-content.narrow,
-  .main-content.gallery,
-  .main-content.blog {
     max-width: 95%;
   }
 
@@ -1023,7 +954,7 @@ img {
   }
 
   .intro-tag {
-    margin-top:6.5rem;
+    margin-top: 6.5rem;
   }
 
   .page-title {
@@ -1031,6 +962,7 @@ img {
   }
 
   .about-grid {
+    display: grid;
     grid-template-columns: 250px 2fr;
     place-items: start;
     gap: 1em;
@@ -1039,7 +971,6 @@ img {
   .profile-photo {
     width: 320px;
     max-width: 100%;
-    object-fit: cover;
   }
 
   .bio-text {
@@ -1064,7 +995,7 @@ img {
     flex-direction: row;
     align-items: center;
     max-height: clamp(500px, 50vh, 100%);
-    margin:0.5rem 0 0.5rem 0;
+    margin: 0.5rem 0 0.5rem 0;
     justify-content: space-between;
   }
 
@@ -1072,6 +1003,14 @@ img {
     width: 220px;
     height: 180px;
     flex-shrink: 0;
-}
-}
+  }
 
+  .blog-post-meta {
+    margin: 0.5rem 0 2rem 0;
+  }
+
+  .site-footer {
+    padding: 1rem;
+    text-align: center;
+  }
+}
