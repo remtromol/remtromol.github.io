@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Info | Naufal Fakhri | Naufal Fakhri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta name="darkreader-lock">
+  <link rel="apple-touch-icon" sizes="180x180" href="/image/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/image/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/image/favicon/site.webmanifest">
+  <!-- Wrapper background -->
+<div class="bg-wrapper">
+  <img src="/image/7jx3IBQ.webp" alt="Background" class="bg-image">
+</div>
+
+</head>
+<body>
+  <aside class="sidebar">
+  <div>
+    <h1 class="brand-title"><a href="/about">Naufal Fakhri</a></h1>
+    <p class="brand-subtitle">My Portfolio</p>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/about" class="active">Info</a></li>
+        <li><a href="/blog">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+</aside>
+
+  <main class="main-content narrow">
+  <h1 class="page-title">About Me</h1>
+
+  <div class="about-grid">
+    <img src="https://i.imgur.com/EeW9E6r.jpeg" alt="Profile Photo" class="profile-photo" />
+    <div class="bio-text">
+      <p>
+        Hello! I am a <strong>3D Artist &amp; Generalist</strong> focusing on hard-surface modeling, low-poly optimization for game engines, and vintage automotive/architectural reconstructions.
+      </p>
+      <p>
+        My background spans visual communication and asset production, bridging the gap between artistic detail and technical pipeline efficiency. Whether crafting complex mechanical components or modular environment kits, I focus on clean topology, optimized Texel density, and crisp PBR texturing.
+      </p>
+      <p>
+        I also document my learning journey. Check out the <a href="/blog">Blog</a> page to see why I built this portfolio and what I am practicing with GitHub Pages.
+      </p>
+    </div>
+  </div>
+
+  <h2 class="section-title">Technical Proficiency</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>Modeling &amp; Sculpting</h3>
+      <ul>
+        <li>Blender</li>
+        <li>Substance 3D Painter</li>
+        <li>Hard-Surface Workflows</li>
+        <li>Subdivision Surface</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <h3>Optimization &amp; Real-Time</h3>
+      <ul>
+        <li>Game-Ready Topology</li>
+        <li>UV Unwrapping &amp; Packing</li>
+        <li>Normal Map Baking</li>
+        <li>Unreal Engine / Unity</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <h3>Design &amp; Layout</h3>
+      <ul>
+        <li>Visual Communication (DKV)</li>
+        <li>PBR Material Layering</li>
+        <li>Modular Kit Planning</li>
+        <li>Concept Visualization</li>
+      </ul>
+    </div>
+  </div>
+    <footer class="site-footer">
+  <div class="social-links">
+    <a href="https://www.artstation.com/remtromol">ArtStation</a> &bull;
+    <a href="https://github.com/remtromol">GitHub</a> &bull;
+    <a href="mailto:nfahri@live.com">Email</a>
+  </div>
+</footer>
+
+  </main>
+
+  <script>
+  // 1. CAROUSEL FUNCTIONS
+  function scrollCarousel(button, direction) {
+    const wrapper = button.closest('.carousel-wrapper');
+    const track = wrapper.querySelector('.carousel-track');
+    const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+    if (!slides.length) return;
+
+    const activeSlide = getActiveSlide(wrapper);
+    if (!activeSlide) return;
+
+    const currentIndex = slides.indexOf(activeSlide);
+    const targetIndex = Math.min(Math.max(currentIndex + direction, 0), slides.length - 1);
+    const targetSlide = slides[targetIndex];
+    if (!targetSlide) return;
+
+    track.scrollTo({
+      left: targetSlide.offsetLeft,
+      behavior: 'smooth'
+    });
+  }
+
+  function applyMarquee(wrap) {
+    const textEl = wrap.querySelector('.caption-text');
+    wrap.classList.remove('marquee');
+    const original = textEl.dataset.original;
+    textEl.textContent = original;
+    if (textEl.scrollWidth > wrap.clientWidth) {
+      textEl.textContent = original + '\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0' + original;
+      wrap.classList.add('marquee');
+    }
+  }
+
+  function getActiveSlide(wrapper) {
+    const track = wrapper.querySelector('.carousel-track');
+    const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+    if (!slides.length) return null;
+
+    const scrollCenter = track.scrollLeft + track.clientWidth / 2;
+    let activeSlide = slides[0];
+    let closestDistance = Infinity;
+
+    slides.forEach(slide => {
+      const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+      const distance = Math.abs(slideCenter - scrollCenter);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        activeSlide = slide;
+      }
+    });
+
+    return activeSlide;
+  }
+
+  function updateCaption(wrapper) {
+    const activeSlide = getActiveSlide(wrapper);
+    if (!activeSlide) return;
+
+    const wrap = wrapper.querySelector('.caption-text-wrap');
+    const textEl = wrap.querySelector('.caption-text');
+    textEl.dataset.original = activeSlide.dataset.caption || '';
+    applyMarquee(wrap);
+  }
+
+  function setWrapperHeight(wrapper) {
+    // No-op: let the images and slides determine their own height to avoid cropping.
+    // Previously this function forced an inline height on the wrapper which caused
+    // images with different aspect ratios to be clipped. Setting `height: auto`
+    // here prevents the script from overriding natural image sizing.
+    if (wrapper) wrapper.style.height = 'auto';
+  }
+
+  function initCarousels() {
+    document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
+      const track = wrapper.querySelector('.carousel-track');
+      // initialize caption and wrapper height
+      updateCaption(wrapper);
+      setWrapperHeight(wrapper);
+
+      let scrollTimeout;
+      track.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          updateCaption(wrapper);
+          setWrapperHeight(wrapper);
+        }, 120);
+      });
+    });
+  }
+
+  window.addEventListener('load', initCarousels);
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
+      updateCaption(wrapper);
+      setWrapperHeight(wrapper);
+    });
+  });
+
+  // 2. LIGHTBOX & PROTECTION FUNCTIONS
+  function openModal(imgSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    modalImg.src = imgSrc;
+    modal.classList.add('open');
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('open');
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryImages = document.querySelectorAll('.carousel-slide img');
+    const allImages = document.querySelectorAll('img');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => openModal(img.src));
+      img.addEventListener('load', () => {
+        const wrapper = img.closest('.carousel-wrapper');
+        if (wrapper) setWrapperHeight(wrapper);
+      });
+    });
+
+    allImages.forEach(img => {
+      img.addEventListener('contextmenu', (e) => e.preventDefault());
+      img.addEventListener('dragstart', (e) => e.preventDefault());
+    });
+  });
+</script>
+
+</body>
+</html>

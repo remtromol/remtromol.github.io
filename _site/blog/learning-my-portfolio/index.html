@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning My Portfolio | Naufal Fakhri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta name="darkreader-lock">
+  <link rel="apple-touch-icon" sizes="180x180" href="/image/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/image/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/image/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/image/favicon/site.webmanifest">
+  <!-- Wrapper background -->
+<div class="bg-wrapper">
+  <img src="/image/7jx3IBQ.webp" alt="Background" class="bg-image">
+</div>
+
+</head>
+<body>
+  <aside class="sidebar">
+  <div>
+    <h1 class="brand-title"><a href="/about">Naufal Fakhri</a></h1>
+    <p class="brand-subtitle">My Portfolio</p>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/about">Info</a></li>
+        <li><a href="/blog">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+</aside>
+
+  <main class="main-content blog">
+    <div class="btn btn-secondary">
+      <a href="/blog">Back to Blog</a>
+    </div>
+    <div class="blog-post">  
+    <header class="blog-post-header">
+      
+        <h1 class="page-title">Learning My Portfolio</h1>
+      
+      
+        <p class="blog-post-meta">
+          July 02, 2026
+           · Naufal Fakhri
+        </p>
+      
+    </header>
+
+    <div class="blog-post-content">
+      <p>This website is more than a portfolio — it is a learning project built on GitHub Pages. I wanted to practice publishing a site with GitHub, using Markdown, and learning how a Jekyll-powered page works.</p>
+
+<p>As a 3D artist and generalist, I often focus on modeling, texturing, and asset production. Making this portfolio gave me a chance to also learn how to present my work online, manage a repository, and make my site easier to update.</p>
+
+<h2 id="what-i-learned">What I learned</h2>
+
+<ul>
+  <li>How to create and edit pages with Markdown</li>
+  <li>How GitHub Pages serves a website directly from a repository</li>
+  <li>How layout templates and includes keep the site consistent</li>
+  <li>How navigation and permalinks work in a Jekyll site</li>
+</ul>
+
+<h2 id="why-i-built-this">Why I built this</h2>
+
+<p>I built this page to document my learning process and to make it easier for others to see both my projects and the steps I am taking to improve my skills. This portfolio is a work in progress, and I will continue refining it as I learn more.</p>
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="social-links">
+    <a href="https://www.artstation.com/remtromol">ArtStation</a> &bull;
+    <a href="https://github.com/remtromol">GitHub</a> &bull;
+    <a href="mailto:nfahri@live.com">Email</a>
+  </div>
+</footer>
+
+</main>
+
+  <script>
+  // 1. CAROUSEL FUNCTIONS
+  function scrollCarousel(button, direction) {
+    const wrapper = button.closest('.carousel-wrapper');
+    const track = wrapper.querySelector('.carousel-track');
+    const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+    if (!slides.length) return;
+
+    const activeSlide = getActiveSlide(wrapper);
+    if (!activeSlide) return;
+
+    const currentIndex = slides.indexOf(activeSlide);
+    const targetIndex = Math.min(Math.max(currentIndex + direction, 0), slides.length - 1);
+    const targetSlide = slides[targetIndex];
+    if (!targetSlide) return;
+
+    track.scrollTo({
+      left: targetSlide.offsetLeft,
+      behavior: 'smooth'
+    });
+  }
+
+  function applyMarquee(wrap) {
+    const textEl = wrap.querySelector('.caption-text');
+    wrap.classList.remove('marquee');
+    const original = textEl.dataset.original;
+    textEl.textContent = original;
+    if (textEl.scrollWidth > wrap.clientWidth) {
+      textEl.textContent = original + '\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0' + original;
+      wrap.classList.add('marquee');
+    }
+  }
+
+  function getActiveSlide(wrapper) {
+    const track = wrapper.querySelector('.carousel-track');
+    const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+    if (!slides.length) return null;
+
+    const scrollCenter = track.scrollLeft + track.clientWidth / 2;
+    let activeSlide = slides[0];
+    let closestDistance = Infinity;
+
+    slides.forEach(slide => {
+      const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+      const distance = Math.abs(slideCenter - scrollCenter);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        activeSlide = slide;
+      }
+    });
+
+    return activeSlide;
+  }
+
+  function updateCaption(wrapper) {
+    const activeSlide = getActiveSlide(wrapper);
+    if (!activeSlide) return;
+
+    const wrap = wrapper.querySelector('.caption-text-wrap');
+    const textEl = wrap.querySelector('.caption-text');
+    textEl.dataset.original = activeSlide.dataset.caption || '';
+    applyMarquee(wrap);
+  }
+
+  function setWrapperHeight(wrapper) {
+    // No-op: let the images and slides determine their own height to avoid cropping.
+    // Previously this function forced an inline height on the wrapper which caused
+    // images with different aspect ratios to be clipped. Setting `height: auto`
+    // here prevents the script from overriding natural image sizing.
+    if (wrapper) wrapper.style.height = 'auto';
+  }
+
+  function initCarousels() {
+    document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
+      const track = wrapper.querySelector('.carousel-track');
+      // initialize caption and wrapper height
+      updateCaption(wrapper);
+      setWrapperHeight(wrapper);
+
+      let scrollTimeout;
+      track.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          updateCaption(wrapper);
+          setWrapperHeight(wrapper);
+        }, 120);
+      });
+    });
+  }
+
+  window.addEventListener('load', initCarousels);
+  window.addEventListener('resize', () => {
+    document.querySelectorAll('.carousel-wrapper').forEach(wrapper => {
+      updateCaption(wrapper);
+      setWrapperHeight(wrapper);
+    });
+  });
+
+  // 2. LIGHTBOX & PROTECTION FUNCTIONS
+  function openModal(imgSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    modalImg.src = imgSrc;
+    modal.classList.add('open');
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('open');
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryImages = document.querySelectorAll('.carousel-slide img');
+    const allImages = document.querySelectorAll('img');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => openModal(img.src));
+      img.addEventListener('load', () => {
+        const wrapper = img.closest('.carousel-wrapper');
+        if (wrapper) setWrapperHeight(wrapper);
+      });
+    });
+
+    allImages.forEach(img => {
+      img.addEventListener('contextmenu', (e) => e.preventDefault());
+      img.addEventListener('dragstart', (e) => e.preventDefault());
+    });
+  });
+</script>
+
+</body>
+</html>
