@@ -69,29 +69,123 @@
 
 <p>Use <code class="language-plaintext highlighter-rouge">#</code> symbols before your text to create titles and section headers.</p>
 
-<p>```markdown</p>
-<h1 id="heading-1-main-page-title---usually-handled-by-front-matter">Heading 1 (Main Page Title - Usually handled by Front Matter)</h1>
-<h2 id="heading-2-main-section-breaks">Heading 2 (Main Section Breaks)</h2>
-<h3 id="heading-3-sub-sections">Heading 3 (Sub-sections)</h3>
-<h4 id="heading-4-minor-sub-sections">Heading 4 (Minor Sub-sections)</h4>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># Heading 1 (Main Page Title - Usually handled by Front Matter)</span>
+<span class="gu">## Heading 2 (Main Section Breaks)</span>
+<span class="gu">### Heading 3 (Sub-sections)</span>
+<span class="gu">#### Heading 4 (Minor Sub-sections)</span>
+</code></pre></div></div>
 
 <h2 id="2-text-formatting">2. Text Formatting</h2>
 
 <p>Apply simple symbols around your words to style text:</p>
 
-<p><strong>Bold text</strong> for emphasis
-<em>Italic text</em> for subtle highlights
-<strong><em>Bold and italic</em></strong> for extra emphasis
-<del>Strikethrough text</del>
-<code class="language-plaintext highlighter-rouge">Inline code</code> for short references like variables or commands</p>
+<p><strong>Bold text</strong> for emphasis<br />
+<em>Italic text</em> for subtle highlights<br />
+<strong><em>Bold and italic</em></strong> for extra emphasis<br />
+<del>Strikethrough text</del><br />
+<code class="language-plaintext highlighter-rouge">Inline code</code> for short references like variables or commands<br /></p>
 
 <h2 id="3-well-images">3. well, images</h2>
 
-<p><code class="language-plaintext highlighter-rouge">![alt text](your-image-path.webp)</code></p>
+<p>you can use this format :</p>
+
+<p><code class="language-plaintext highlighter-rouge">![alt text](your-image-path.png)</code></p>
+
+<p>or this one, to prevent broken image paths when you hosted on github page:</p>
+
+<p><code class="language-plaintext highlighter-rouge">!["alt text"](/assets/images/posts/model-render.jpg)</code></p>
 
 <p>it looks like this</p>
 
-<p><img src="/image/blog/screenshot-of.webp" alt="screenshot" /></p>
+<p><img src="/image/blog/screenshot-of.webp" alt="&quot;screenshot&quot;" /></p>
+
+<h2 id="4-lists">4. Lists</h2>
+
+<p>bullet lists:</p>
+<ul>
+  <li>3D Asset Creation</li>
+  <li>Retopology &amp; UV Mapping</li>
+  <li>PBR Texturing</li>
+</ul>
+
+<p>numbered lists:</p>
+<ol>
+  <li>Export high-poly mesh from Blender</li>
+  <li>Bake maps in Substance Painter</li>
+  <li>Set up material shaders in-engine</li>
+</ol>
+
+<p>checklist:</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />High-poly modeling completed</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />UV unwrapping finished</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Final renders in Cycles</li>
+</ul>
+
+<h2 id="5-blockquotes">5. Blockquotes</h2>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">&gt;</code> character to highlight key quotes, notes or tips:</p>
+
+<blockquote>
+  <p>Documenting the creation process is just as important as presenting the final render.</p>
+</blockquote>
+
+<h2 id="6-code-blocks--syntax-highlighting">6. Code Blocks &amp; Syntax highlighting</h2>
+
+<p>To display multi-line code blocks, wrap the code with triple backticks (```). You can add the language name right after the top backticks for syntax coloring:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "assetName": "Sci-Fi Console",
+  "polygonCount": 18450,
+  "textureResolution": "4096x4096"
+}
+</code></pre></div></div>
+
+<h2 id="7-data-tables">7. Data Tables</h2>
+
+<p>Create structured spec sheets or quick comparisons using pipes <code class="language-plaintext highlighter-rouge">|</code> and dashes <code class="language-plaintext highlighter-rouge">-</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Asset Name</th>
+      <th style="text-align: center">Triangle Count</th>
+      <th style="text-align: center">Texture Maps</th>
+      <th style="text-align: right">Render Engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Classic Car Chassis</td>
+      <td style="text-align: center">48,200</td>
+      <td style="text-align: center">Albedo, Normal, Roughness</td>
+      <td style="text-align: right">Cycles</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Sci-Fi Door</td>
+      <td style="text-align: center">8,500</td>
+      <td style="text-align: center">Albedo, Normal, Metallic</td>
+      <td style="text-align: right">EEVEE</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="8-horizontal-rules">8. Horizontal Rules</h2>
+
+<p>Use three dashes — or asterisks *** on a blank line to insert a clean section divider line:</p>
+
+<p>Section finished above.</p>
+
+<hr />
+
+<p>New topic starts here.</p>
+
+<h2 id="9-links">9. Links</h2>
+
+<p><code class="language-plaintext highlighter-rouge">My portfolio url is [remtromol.site](https://remtromol.site).</code></p>
+
+<p>My portfolio url is <a href="https://remtromol.site">remtromol.site</a></p>
 
     </div>
   </article>
