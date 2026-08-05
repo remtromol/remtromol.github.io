@@ -2,8 +2,10 @@
    REMTROMOL PORTFOLIO — SHARED STYLESHEET
    ========================================================= */
 
+@view-transition {
+  navigation: auto;
+}
 
-/* ---------- ROOT VARIABLES ---------- */
 :root {
   --bg-main: #00000026; /* fallback color shown if the bg image fails/hasn't loaded */
   --bg-card: #00000026;
@@ -52,6 +54,37 @@ body {
   flex-direction: column;
   padding: 0 0.5rem;
 }
+
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0.8;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+::view-transition-old(main-content) {
+  animation: 350ms cubic-bezier(0.4, 0, 0.2, 1) both slide-out-right;
+}
+
+::view-transition-new(main-content) {
+  animation: 350ms cubic-bezier(0.4, 0, 0.2, 1) both slide-in-right;
+}
+
 
 a,
 a:link,
@@ -150,6 +183,7 @@ a:focus {
   padding: 0.25rem;
   margin: 0;
   max-width: 100%;
+  view-transition-name: main-content;
 }
 
 /* Narrow content modifier (about, gallery, blog) */
