@@ -24,8 +24,10 @@ permalink: /blog
     {% if blog_posts and blog_posts.size > 0 %}
       {% for post in blog_posts %}
       <article class="post-item">
-        <div class="post-meta">{{ post.date | date: "%B %d, %Y" }}</div>
-        <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <div class="post-header">
+          <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          <div class="post-meta">{{ post.date | date: "%B %d, %Y" }}</div>
+        </div>
         <p class="post-excerpt">{{ post.excerpt | markdownify }}</p>
         <a class="read-more" href="{{ post.url | relative_url }}">Read more →</a>
       </article>

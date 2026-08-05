@@ -1,7 +1,7 @@
 ---
-layout: default
+layout: post
 title: "Learning My Portfolio"
-date: 2026-08-03
+date: 2026-07-02
 author: "Naufal Fakhri"
 excerpt: "Why I built this portfolio on GitHub Pages and what I learned while creating it."
 ---

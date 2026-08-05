@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<main class="main-content blog">
+    <div class="btn btn-secondary">
+      <a href="{{ '/blog' | relative_url }}">Back to Blog</a>
+    </div>
+    <div class="blog-post">  
+    <header class="blog-post-header">
+      {% if page.title %}
+        <h1 class="page-title">{{ page.title }}</h1>
+      {% endif %}
+      {% if page.date or page.author %}
+        <p class="blog-post-meta">
+          {% if page.date %}{{ page.date | date: "%B %d, %Y" }}{% endif %}
+          {% if page.author %}{% if page.date %} · {% endif %}{{ page.author }}{% endif %}
+        </p>
+      {% endif %}
+    </header>
+
+    <div class="blog-post-content">
+      {{ content }}
+    </div>
+  </div>
+</main>
