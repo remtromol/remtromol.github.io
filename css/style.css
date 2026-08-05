@@ -77,6 +77,7 @@ a:focus {
   padding: 2.5rem;
   border: 1px solid var(--border-color);
   border-top: none;
+  border-left: none;
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
 }
