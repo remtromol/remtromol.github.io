@@ -1,41 +1,6 @@
 ---
-layout: default
+layout: blog
 title: "Blog"
 nav: blog
 permalink: /blog
 ---
-<main class="main-content narrow">
-  <h1 class="page-title">Blog</h1>
-
-  <p>
-    Notes from my learning process, GitHub Pages experiments, and site updates.
-    Here you can follow how I build and improve this portfolio over time.
-  </p>
-
-  <div class="post-list">
-    {% if site.collections.blog and site.collections.blog.docs %}
-      {% assign blog_posts = site.collections.blog.docs | sort: 'date' | reverse %}
-    {% elsif site.blog %}
-      {% assign blog_posts = site.blog | sort: 'date' | reverse %}
-    {% else %}
-      {% assign blog_posts = '' %}
-    {% endif %}
-
-    {% if blog_posts and blog_posts.size > 0 %}
-      {% for post in blog_posts %}
-      <article class="post-item">
-        <div class="post-header">
-          <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-          <div class="post-meta">{{ post.date | date: "%B %d, %Y" }}</div>
-        </div>
-        <p class="post-excerpt">{{ post.excerpt | markdownify }}</p>
-        <a class="read-more" href="{{ post.url | relative_url }}">Read more →</a>
-      </article>
-      {% endfor %}
-    {% else %}
-      <article class="post-item">
-        <p>No posts are available yet. Add files under <code>_blog/</code> to publish blog entries.</p>
-      </article>
-    {% endif %}
-  </div>
-</main>

@@ -48,9 +48,15 @@ body {
   color: var(--text-primary);
   font-family: var(--font-body);
   line-height: 1.6;
-  display: block;
   min-height: 100vh;
-  padding: 0;
+  flex-direction: column;
+  padding: 0 0.5rem;
+}
+
+@media (min-width: 900px) {
+  body {
+    padding: 0;
+  }
 }
 
 a,
@@ -65,49 +71,56 @@ a:focus {
   text-decoration: underline;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-a:hover,
-a:focus {
-  text-decoration: underline;
-}
-
-/* ---------- SIDEBAR (fixed left panel) ---------- */
+/* ---------- SIDEBAR (mobile-first) ---------- */
 .sidebar {
-  width: 340px;
+  width: 100%;
   backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: fixed;
-  top: 10px;
-  bottom: 10px;
-  left: 0;
+  position: relative;
   z-index: 100;
   padding: 2.5rem;
-  border-right: 1px solid var(--border-color);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;  
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+/* Desktop: Fixed left sidebar */
+@media (min-width: 900px) {
+  .sidebar {
+    width: 250px;
+    position: fixed;
+    padding: 2rem 0.75rem 2rem 1.5rem;
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
 }
 
 .brand-title {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   line-height: 1.1;
-  margin-bottom: 0.5rem;
 }
 
 .brand-title a {
   color: var(--text-primary);
   text-decoration: none;
-  padding-top: 5rem;
+  padding-top: 0;
+}
+
+@media (min-width: 900px) {
+  .brand-title a {
+    padding-top: 2rem;
+  }
 }
 
 .brand-subtitle {
@@ -121,14 +134,15 @@ a:focus {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
 }
 
 .nav-links a {
   color: var(--text-secondary);
   text-decoration: none;
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   letter-spacing: 0.1em;
   transition: color 0.4s ease;
 }
@@ -143,6 +157,9 @@ a:focus {
   gap: 1rem;
   font-size: 0.85rem;
   color: var(--text-muted);
+  position: relative;
+  margin: 2.5rem;
+  padding: 1rem;
 }
 
 .social-links a {
@@ -155,24 +172,26 @@ a:focus {
   color: var(--text-primary);
 }
 
-/* ---------- MAIN CONTENT AREA ---------- */
+/* ---------- MAIN CONTENT AREA (mobile-first) ---------- */
 .main-content {
-  margin-left: 340px;
   flex: 1;
-  padding: 2em 1em;
-  max-width: 1400px;
+  padding: 1rem;
+  margin: 0;
+  max-width: 100%;
 }
 
-/* about.html used a slightly narrower content column — kept as an
-   optional modifier so behavior stays identical page to page. */
-.main-content.narrow {
-  max-width: 1050px;
+/* Desktop: Add left margin for fixed sidebar and adjust padding */
+@media (min-width: 900px) {
+  .main-content {
+    margin-left: 250px;
+    max-width: 1400px;
+    padding: 2em 1em;
+  }
 }
 
-.main-content.gallery {
-  max-width: 1050px;
-}
-
+/* Narrow content modifier (about, gallery, blog) */
+.main-content.narrow,
+.main-content.gallery,
 .main-content.blog {
   max-width: 1050px;
 }
@@ -191,7 +210,6 @@ a:focus {
 }
 
 .blog-back-button {
-  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.95rem;
@@ -294,12 +312,12 @@ a:focus {
   gap: 0.5rem;
   background-color: var(--accent);
   color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 18px;
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 18px;
   transition: all 0.2s ease;
 }
 
@@ -312,6 +330,7 @@ a:focus {
   backdrop-filter: blur(2px);
   color: var(--text-primary);
   border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
 }
 
 .btn-secondary:hover {
@@ -327,7 +346,6 @@ a:focus {
 .intro-hero {
   margin: auto 1rem 10em 1rem;
   padding-bottom: 1em;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .intro-tag {
@@ -516,16 +534,6 @@ a:focus {
 .post-title {
   flex: 1 1 0;
   min-width: 0;
-}
-
-.post-meta {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-bottom: 0;
-  white-space: nowrap;
-}
-
-.post-title {
   font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 700;
@@ -576,12 +584,13 @@ a:focus {
   font-size: 3.2rem;
   font-weight: 700;
   margin-bottom: 0;
-  margin-top: 8rem;
+  margin-top: 1rem;
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid: repeat(2, 1fr);
+  place-items: center;
   gap: 1.5rem;
   backdrop-filter: blur(8px);
   border: 1px solid var(--border-color);
@@ -591,38 +600,32 @@ a:focus {
   background-color: transparent;
 }
 
-/* Responsive layout: image beside text on desktop, stacked on mobile */
+.profile-photo {
+  width: clamp(320px, 75%, 200px);
+  height: auto;
+  object-fit: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+}
+
+/* Desktop: image beside text */
 @media (min-width: 900px) {
   .about-grid {
-    /* fixed-width image column + flexible text column */
-    grid-template-columns: 320px 1fr;
-    gap: 2rem;
-    align-items: center; /* vertically center image and text */
+    grid-template-columns: 250px 2fr;
+    place-items: start;
+    gap: 1em;
   }
 
   .profile-photo {
-    width: 320px;      /* match the column width */
-    height: auto;
+    width: 320px;
     max-width: 100%;
-    object-fit: cover; /* preserve cropping nicely */
-    border-radius: 12px;
-    margin: 0;         /* remove any auto centering on desktop */
-    display: block;
+    object-fit: cover;
   }
 
   .bio-text {
     align-self: center;
   }
-}
-
-
-.profile-photo {
-  width: 100%;
-  height: block; /* allow natural aspect ratio; overridden on desktop */
-  object-fit: auto;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-  background-color: var(--bg-card);
 }
 
 .bio-text p {
@@ -631,10 +634,9 @@ a:focus {
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   line-height: 1.7;
+  hyphens: auto;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
   text-justify: inter-word;
 }
 
@@ -690,9 +692,16 @@ a:focus {
 .project-block {
   backdrop-filter: blur(8px);
   border: 1px solid var(--border-color);
-  border-radius: 18px;
-  padding: 2rem;
-  margin-bottom: 1rem;
+  border-radius: 24px;
+  padding: 0.5rem 0.5rem 5px 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .project-block {
+    padding: 2rem;
+    margin-bottom: 1rem;
+  }
 }
 
 /*Wide / non-cropped project modifier*/
@@ -726,8 +735,7 @@ a:focus {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--accent);
-  margin-bottom: 0.25rem;
-  margin-top: 1rem;
+  margin: 0.1rem 0 1rem 0;
   display: block;
 }
  
@@ -747,6 +755,7 @@ a:focus {
 .carousel-wrapper {
   position: relative;
   width: 100%;
+  margin: 0;
   margin-bottom: 0.25rem;
   border-radius: 18px;
   overflow: hidden;
@@ -908,28 +917,23 @@ a:focus {
 }
 
 /* Disable dragging on all images */
-  img {
-    -webkit-user-drag: none;
-    user-select: none;
-    cursor: pointer;
-  }
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  cursor: pointer;
+}
 
 /* Lightbox Modal Overlay */
 .image-modal {
   position: fixed;
+  inset: 0;
   z-index: 9999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: zoom-out;
+  background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(8px);
-
-  /* Hidden state with transitions */
+  cursor: zoom-out;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -941,18 +945,18 @@ a:focus {
   position: absolute;
   top: 20px;
   right: 25px;
+  z-index: 10000;
+  padding: 5px 10px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
   color: #fff;
   font-size: 35px;
   font-weight: bold;
   line-height: 1;
-  background: transparent;
-  border: none;
   cursor: pointer;
-  z-index: 10000;
-  padding: 5px 10px;
-  border-radius: 50%;
-  transition: color 0.2s ease, transform 0.2s ease;
   user-select: none;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .close-btn:hover,
@@ -985,78 +989,15 @@ a:focus {
   transform: scale(1); /* Scales up into full size */
 }
 
-/*===========
-    mobile
-  ===========*/
-@media (max-width: 900px) {
-  body {
-    flex-direction: column;
-    padding: 0 0.5rem;
-  }
-
-  .sidebar {
-    width: 100%;
-    position: relative;
-    padding: 2.5rem;
-    top: 0;
-    border-top: none;
-    border-right: 1px solid var(--border-color);
-    border-left: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    border-bottom-left-radius: 24px;
-    border-bottom-right-radius: 24px;
-    border-top-right-radius: 0;
-  }
-
-  /* Remove the extra top padding added on the brand link for mobile */
-  .brand-title a {
-    padding-top: 0;
-  }
-
-  .social-links {
-    position: relative;
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
-  }
-
-  .social-links::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.3);
-  }
- 
-  .main-content {
-    margin: 1px 1px;
-    padding: 1px 1px;
-  }
-
-  .card {
-    position-area: center;
+/* Footer placement inside main-content */
+.site-footer {
+  padding-top: 1rem;
+  text-align: center;
 }
 
-  .project-tag {
-    margin-top: 0.1rem;
-    margin-bottom: 1rem;
-  }
-
-  .project-block {
-    border-radius: 24px;
-    margin-bottom: 1.5rem;
-    padding: 0.5rem;
-    padding-bottom: 5px;
-  }
-
-  .project-block.wide {
-    padding: 0;
-  }
-
-  .carousel-wrapper {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
+.site-footer .social-links {
+  border-top: 1px solid var(--border-color);
+  margin: 1rem auto 0 auto;
+  padding: 2rem;
+  justify-content: center;
 }
