@@ -1,14 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Redirecting…</title>
-    <link rel="canonical" href="/home">
-    <meta http-equiv="refresh" content="0; url=/home" />
-    <script>location.replace('/home');</script>
-  </head>
-  <body>
-    <p>Redirecting to the <a href="/home">home page</a>. If you are not redirected automatically, click the link.</p>
-  </body>
-</html>
+---
+layout: default
+---
+<main class="main-content">
+  <section id="intro" class="intro-hero">
+    <span class="intro-tag">3D Artist &amp; Classic Car Designer</span>
+    <h1>Crafting real-time assets, mechanical precision, and <span>immersive 3D worlds.</span></h1>
+    <p class="intro-text">
+      Welcome to my digital workspace. I specialize in hard-surface vehicle modeling, game-ready environment assets, and optimized real-time workflows. Bringing historical accuracy and detailed craftsmanship into modern pipelines.
+    </p>
+    <div class="intro-badges">
+      <span class="badge">Blender</span>
+      <span class="badge">Photoshop</span>
+      <span class="badge">Affinity</span>
+      <span class="badge">Solidworks</span>
+      <span class="badge">Unity</span>
+      <span class="badge">Unreal Engine</span>
+    </div>
+    <div class="cta-group">
+      <a href="/about" class="btn btn-secondary">Get in Touch</a>
+    </div>
+
+    <section id="selected" class="portfolio-section">
+      <h2 class="section-title">Featured Assets</h2>
+      <div class="portfolio-grid">
+        {% assign featured = site.portfolio | sort: 'order' | slice: 0, 2 %}
+        {% for item in featured %}
+        {% capture project_slug %}{{ item.title | slugify }}{% endcapture %}
+        <div class="card">
+          <a href="{{ '/projects#' | append: project_slug | relative_url }}" class="card-link" aria-label="View project {{ item.title }}">
+            <img src="{{ item.images[0].src }}" alt="{{ item.images[0].alt }}" class="card-thumb">
+            <div class="card-body">
+              <h3 class="card-title">{{ item.title }}</h3>
+              <p class="card-excerpt">{{ item.description }}</p>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <div class="cta-group">
+      <a href="/projects" class="btn btn-secondary">View All Projects →</a>
+    </div>
+  </section>
+    {% include footer.html %}
+  </main>
