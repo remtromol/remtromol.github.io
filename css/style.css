@@ -319,7 +319,9 @@ body {
   backdrop-filter: blur(8px);
   width: 100%;
   height: 220px;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  background-color: var(--bg-card);
   display: block;
 }
 
@@ -577,8 +579,10 @@ body {
  
 .carousel-slide img {
   width: 100%;
-  height: clamp(420px, 65vh, 760px);
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  background-color: var(--bg-card);
   display: block;
 }
  
@@ -597,6 +601,25 @@ body {
   font-size: 0.85rem;
   font-family: var(--font-heading);
   border-top: 1px solid var(--border-color);
+}
+
+/* --- Wide / non-cropped project modifier --- */
+/* Add `wide` to an article.project-block to allow a larger centered
+   project container on wide screens without changing global layout. */
+.project-block.wide {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Optional: apply non-cropping images inside project blocks */
+.project-block img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  background-color: var(--bg-card);
 }
  
 /* Text area: takes remaining space, room on the right is reserved
