@@ -1,4 +1,4 @@
-# Portfolio site — Jekyll workflow
+# Art Portfolio site to Jekyll Workflow
 
 This repository was converted from static HTML pages into a Jekyll-powered site without changing the visual design.
 
