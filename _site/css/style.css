@@ -77,7 +77,6 @@ a:focus {
   padding: 2.5rem;
   border: 1px solid var(--border-color);
   border-top: none;
-  border-left: none;
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
 }
@@ -308,7 +307,7 @@ a:focus {
    HOME PAGE
    ========================================================= */
 .intro-hero {
-  margin: auto 1rem 10em 1rem;
+  margin: 0.1rem 1rem 8rem 1rem;
   padding-bottom: 1em;
 }
 
@@ -320,7 +319,7 @@ a:focus {
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 1rem;
-  margin-top: 8rem;
+  margin-top: 2rem;
 }
 
 .intro-hero h1 {
@@ -947,6 +946,7 @@ img {
     bottom: 10px;
     left: 0;
     border-top: 1px solid var(--border-color);
+    border-left: none;
     border-bottom-left-radius: 0;
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
@@ -966,6 +966,18 @@ img {
   .main-content.gallery,
   .main-content.blog {
     max-width: 95%;
+  }
+
+  .intro-hero {
+    margin: 0.15rem;
+  }
+
+  .intro-tag {
+    margin-top:6.5rem;
+  }
+
+  .page-title {
+    margin-top: 6rem;
   }
 
   .about-grid {
