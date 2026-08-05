@@ -99,6 +99,7 @@ body {
     height: 1px;
     background-color: rgba(255, 255, 255, 0.3);
   }
+
 }
 
 .brand-title {
@@ -433,8 +434,8 @@ body {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 3rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
   backdrop-filter: blur(8px);
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -445,6 +446,7 @@ body {
 
 .profile-photo {
   width: 100%;
+  max-width: 280px;
   height: 340px;
   object-fit: cover;
   border-radius: 12px;
@@ -730,5 +732,14 @@ body {
   }
   .project-block.img {
     padding: 0.5rem;
+  }
+  /* Stacking layout for mobile screens */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .profile-photo {
+    max-width: 280px; /* Keeps image width consistent with original size */
   }
 }
