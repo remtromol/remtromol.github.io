@@ -37,6 +37,12 @@ images:
 
 3. Commit and push — Jekyll will render the new project automatically.
 
+## Adding a blog post
+
+1. (still on progess)
+
+
+
 ## Editing page content
 
 - `home.md` controls the homepage content
