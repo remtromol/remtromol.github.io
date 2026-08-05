@@ -56,8 +56,6 @@ bundle exec jekyll serve --livereload
 
 Then open `http://127.0.0.1:4000`.
 
-## Notes
+## Thanks to
 
-- Your current site appearance is preserved.
-- Old HTML files (`home.html`, `projects.html`, `about.html`) were not deleted and can remain as backups while you transition.
-- Portfolio items are now easier to add and manage from `_portfolio/`.
+Jekyll - "https://jekyllrb.com"
