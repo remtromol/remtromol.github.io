@@ -1,0 +1,45 @@
+---
+layout: default
+---
+<main class="main-content gallery">
+  <h1 class="page-title">Project Gallery</h1>
+  <p class="page-desc">Click any render to enlarge. Swipe through high-res renders, wireframe overlays, and texture passes.</p>
+
+  {% assign sorted_portfolio = site.portfolio | sort: 'order' %}
+  {% for item in sorted_portfolio %}
+  <article class="project-block">
+    <div class="project-header">
+      <span class="project-tag">{{ item.tag }}</span>
+      <h2 class="project-title">{{ item.title }}</h2>
+      <p class="project-desc">{{ item.description }}</p>
+    </div>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-track">
+        {% for image in item.images %}
+        <div class="carousel-slide" data-caption="{{ image.caption }}">
+          <img src="{{ image.src }}" alt="{{ image.alt }}">
+        </div>
+        {% endfor %}
+      </div>
+      <div class="slide-caption">
+        <div class="caption-text-wrap"><span class="caption-text"></span></div>
+      </div>
+      <div class="carousel-nav">
+        <button class="carousel-btn btn-prev" onclick="scrollCarousel(this, -1)" aria-label="Previous slide">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button class="carousel-btn btn-next" onclick="scrollCarousel(this, 1)" aria-label="Next slide">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+</main>
+
+<!-- LIGHTBOX MODAL CONTAINER -->
+<div id="imageModal" class="image-modal" onclick="closeModal()">
+  <button class="close-btn" aria-label="Close modal" onclick="closeModal()">&times;</button>
+  <img id="modalImage" src="" alt="Enlarged view" onclick="event.stopPropagation()">
+</div>

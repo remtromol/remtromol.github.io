@@ -1,0 +1,44 @@
+---
+layout: default
+---
+<main class="main-content">
+  <section id="intro" class="intro-hero">
+    <span class="intro-tag">3D Artist &amp; Classic Car Designer</span>
+    <h1>Crafting real-time assets, mechanical precision, and <span>immersive 3D worlds.</span></h1>
+    <p class="intro-text">
+      Welcome to my digital workspace. I specialize in hard-surface vehicle modeling, game-ready environment assets, and optimized real-time workflows. Bringing historical accuracy and detailed craftsmanship into modern pipelines.
+    </p>
+    <div class="intro-badges">
+      <span class="badge">Blender</span>
+      <span class="badge">Photoshop</span>
+      <span class="badge">Affinity</span>
+      <span class="badge">Solidworks</span>
+      <span class="badge">Unity</span>
+      <span class="badge">Unreal Engine</span>
+    </div>
+    <div class="cta-group">
+      <a href="/about" class="btn btn-secondary">Get in Touch</a>
+    </div>
+
+    <section id="selected" class="portfolio-section">
+      <h2 class="section-title">Featured Assets</h2>
+      <div class="portfolio-grid">
+        {% assign featured = site.portfolio | sort: 'order' | slice: 0, 2 %}
+        {% for item in featured %}
+        <div class="card">
+          <img src="{{ item.images[0].src }}" alt="{{ item.images[0].alt }}" class="card-thumb">
+          <div class="card-body">
+            <span class="card-tag">{{ item.tag }}</span>
+            <h3 class="card-title">{{ item.title }}</h3>
+            <p class="card-excerpt">{{ item.description }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <div class="cta-group">
+      <a href="/projects" class="btn btn-secondary">View All Projects →</a>
+    </div>
+  </section>
+</main>

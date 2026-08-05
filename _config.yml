@@ -1,0 +1,8 @@
+title: "Naufal Fakhri"
+email: "nfahri@live.com"
+url: "https://remtromol.github.io"
+baseurl: ""
+markdown: kramdown
+collections:
+  portfolio:
+    output: false
