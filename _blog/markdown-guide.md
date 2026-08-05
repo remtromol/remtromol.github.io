@@ -35,8 +35,8 @@ Apply simple symbols around your words to style text:
 
 ## 3. well, images
 
-`![alt text](your-image-url.png)`
+`![alt text](your-image-path.webp)`
 
 it looks like this 
 
-![meta maybe](image\blog\screenshot-of.png)
+![meta maybe](image\blog\screenshot-of.webp)
