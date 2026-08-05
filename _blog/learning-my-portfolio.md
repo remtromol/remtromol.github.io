@@ -20,3 +20,5 @@ As a 3D artist and generalist, I often focus on modeling, texturing, and asset p
 ## Why I built this
 
 I built this page to document my learning process and to make it easier for others to see both my projects and the steps I am taking to improve my skills. This portfolio is a work in progress, and I will continue refining it as I learn more.
+
+![screenshot](\image\blog\markdown1.png)

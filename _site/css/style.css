@@ -290,6 +290,41 @@ a:focus {
   border-radius: 6px;
 }
 
+.post-item {
+  display: flex;
+  flex-direction: column;   /* Stacked layout for small screens */
+  align-items: stretch;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+}
+.post-thumbnail-link {
+  width: 100%;
+  height: 180px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.post-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.post-item:hover .post-thumbnail {
+  transform: scale(1.04);
+}
+
+.post-content-wrapper {
+  flex: 1;
+}
+
 /* ---------- BUTTONS ---------- */
 .btn {
   display: inline-block;
@@ -503,20 +538,6 @@ a:focus {
   flex-direction: column;
   gap: 2rem;
   margin: 2rem 0.5rem 2rem 0.5rem;
-}
-
-.post-item {
-  border: 1px solid var(--border-color);
-  border-radius: 18px;
-  background-color: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(8px);
-  padding: 1rem 1rem 2rem 1rem;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.post-item:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
 }
 
 .post-header {
@@ -1037,6 +1058,22 @@ img {
   .project-block {
     padding: 2rem;
     margin-bottom: 1rem;
+  }
+
+  .post-list {
+    gap: 0.5rem;
+    margin: 0.1rem auto 0.1rem auto;
+    padding: 0.1rem auto 0.1rem auto;
+  }
+
+  .post-item {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .post-thumbnail-link {
+    width: 180px;
+    height: 120px;
   }
 
 }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog | Naufal Fakhri</title>
+  <title>Markdown Basics: A Quick Reference Guide for Jekyll | Naufal Fakhri</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" onload="this.rel='stylesheet'">
@@ -30,92 +30,68 @@
         <li><a href="/">Home</a></li>
         <li><a href="/projects">Projects</a></li>
         <li><a href="/about">Info</a></li>
-        <li><a href="/blog" class="active">Blog</a></li>
+        <li><a href="/blog">Blog</a></li>
       </ul>
     </nav>
   </div>
   
 </aside>
 
-  <main class="main-content narrow">
-  <h1 class="page-title">Blog</h1>
-
-  <p>
-    Notes from my learning process, GitHub Pages experiments, and site updates.
-    Here you can follow how I build and improve this portfolio over time.
-  </p>
-
-  <div class="post-list">
-    
-
-    
+  <main class="main-content blog">
+    <div class="btn btn-secondary">
+      <a href="/blog">Back to Blog</a>
+    </div>
+    <div class="blog-post">  
+    <header class="blog-post-header">
       
-
-        
-        
-
-        
-
-        <article class="post-item">
-          <a href="/blog/markdown-guide/" class="post-thumbnail-link">
-            <img src="/assets/images/posts/markdown-guide-hero.jpg" alt="Markdown Basics: A Quick Reference Guide for Jekyll" class="post-thumbnail" loading="lazy">
-          </a>
-
-          <div class="post-content-wrapper">
-            <div class="post-header">
-              <h2 class="post-title"><a href="/blog/markdown-guide/">Markdown Basics: A Quick Reference Guide for Jekyll</a></h2>
-              <div class="post-meta">August 05, 2026</div>
-            </div>
-            <p class="post-excerpt">A complete cheatsheet on writing, formatting, and adding media to .md files for blog posts and portfolio documentation.</p>
-            <a class="read-more" href="/blog/markdown-guide/">Read more →</a>
-          </div>
-        </article>
+        <h1 class="page-title">Markdown Basics: A Quick Reference Guide for Jekyll</h1>
       
-
-        
-        
-
-        
-
-        <article class="post-item">
-          <a href="/blog/borobudur-creation-test/" class="post-thumbnail-link">
-            <img src="/image%5C7jx3IBQ.webp" alt="Borobudur Creation post test" class="post-thumbnail" loading="lazy">
-          </a>
-
-          <div class="post-content-wrapper">
-            <div class="post-header">
-              <h2 class="post-title"><a href="/blog/borobudur-creation-test/">Borobudur Creation post test</a></h2>
-              <div class="post-meta">August 03, 2026</div>
-            </div>
-            <p class="post-excerpt">The Borobudur Project and how i finished it</p>
-            <a class="read-more" href="/blog/borobudur-creation-test/">Read more →</a>
-          </div>
-        </article>
       
-
-        
-        
-
-        
-
-        <article class="post-item">
-          <a href="/blog/learning-my-portfolio/" class="post-thumbnail-link">
-            <img src="/%5Cimage%5Cblog%5Cmarkdown1.png" alt="Learning My Portfolio" class="post-thumbnail" loading="lazy">
-          </a>
-
-          <div class="post-content-wrapper">
-            <div class="post-header">
-              <h2 class="post-title"><a href="/blog/learning-my-portfolio/">Learning My Portfolio</a></h2>
-              <div class="post-meta">July 02, 2026</div>
-            </div>
-            <p class="post-excerpt">Why I built this portfolio on GitHub Pages and what I learned while creating it.</p>
-            <a class="read-more" href="/blog/learning-my-portfolio/">Read more →</a>
-          </div>
-        </article>
+        <p class="blog-post-meta">
+          August 05, 2026
+           · Naufal Fakhri
+        </p>
       
-    
+    </header>
+
+    <div class="blog-post-content">
+      <p>Markdown (<code class="language-plaintext highlighter-rouge">.md</code>) is a lightweight text-formatting syntax that lets you write readable content without cluttering your file with raw HTML tags. When Jekyll builds your site, it automatically parses Markdown files into clean HTML.</p>
+
+<p>Here is a quick reference guide on everything you can build using Markdown files.</p>
+
+<hr />
+
+<h2 id="1-headings">1. Headings</h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">#</code> symbols before your text to create titles and section headers.</p>
+
+<p>```markdown</p>
+<h1 id="heading-1-main-page-title---usually-handled-by-front-matter">Heading 1 (Main Page Title - Usually handled by Front Matter)</h1>
+<h2 id="heading-2-main-section-breaks">Heading 2 (Main Section Breaks)</h2>
+<h3 id="heading-3-sub-sections">Heading 3 (Sub-sections)</h3>
+<h4 id="heading-4-minor-sub-sections">Heading 4 (Minor Sub-sections)</h4>
+
+<h2 id="2-text-formatting">2. Text Formatting</h2>
+
+<p>Apply simple symbols around your words to style text:</p>
+
+<p><strong>Bold text</strong> for emphasis
+<em>Italic text</em> for subtle highlights
+<strong><em>Bold and italic</em></strong> for extra emphasis
+<del>Strikethrough text</del>
+<code class="language-plaintext highlighter-rouge">Inline code</code> for short references like variables or commands</p>
+
+<h2 id="3-well-images">3. well, images</h2>
+
+<p><code class="language-plaintext highlighter-rouge">![alt text](your-image-url.png)</code></p>
+
+<p>it looks like this</p>
+
+<p><img src="image\blog\screenshot-of.png" alt="meta maybe" /></p>
+
+    </div>
   </div>
-    <footer class="site-footer">
+  <footer class="site-footer">
   <div class="social-links">
     <a href="https://www.artstation.com/remtromol">ArtStation</a> &bull;
     <a href="https://github.com/remtromol">GitHub</a> &bull;
