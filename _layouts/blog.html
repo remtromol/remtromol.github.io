@@ -1,10 +1,10 @@
 ---
 layout: default
 ---
-<main class="main-content narrow">
+<main class="main-content">
   <h1 class="page-title">Blog</h1>
 
-  <p>
+  <p class="page-desc">
     Notes from my learning process, GitHub Pages experiments, and site updates.
     Here you can follow how I build and improve this portfolio over time.
   </p>
@@ -20,14 +20,39 @@ layout: default
 
     {% if blog_posts and blog_posts.size > 0 %}
       {% for post in blog_posts %}
-      <article class="post-item">
-        <div class="post-header">
-          <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-          <div class="post-meta">{{ post.date | date: "%B %d, %Y" }}</div>
-        </div>
-        <p class="post-excerpt">{{ post.excerpt | markdownify }}</p>
-        <a class="read-more" href="{{ post.url | relative_url }}">Read more →</a>
-      </article>
+
+        {% comment %} Determine image source: 1st image in post content -> Default fallback {% endcomment %}
+        {% assign post_thumbnail = nil %}
+
+        {% if post.content contains '<img' %}
+          {% assign first_img_tag = post.content | split: '<img' | last | split: '>' | first %}
+          {% assign post_thumbnail = first_img_tag | split: 'src="' | last | split: '"' | first %}
+          
+          {% comment %} Fix Windows backslashes and missing leading slash {% endcomment %}
+          {% assign post_thumbnail = post_thumbnail | replace: '\', '/' %}
+          {% assign first_char = post_thumbnail | slice: 0 %}
+          {% if first_char != '/' %}
+            {% assign post_thumbnail = post_thumbnail | prepend: '/' %}
+          {% endif %}
+        {% else %}
+          {% assign post_thumbnail = '/image/7jx3IBQ.webp' %}
+        {% endif %}
+
+
+          <a href="{{ post.url | relative_url }}" class="post-item">
+            <div class="post-content-wrapper">
+                            <div class="post-header">
+                <h2 class="post-title">{{ post.title }}</h2>
+              </div>
+              <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+            </div>
+            <div class="post-thumbnail-wrapper">
+              <img src="{{ post_thumbnail | relative_url }}" alt="{{ post.title }}" class="post-thumbnail" loading="lazy">
+            </div>
+
+          </a>
+
+
       {% endfor %}
     {% else %}
       <article class="post-item">
@@ -35,5 +60,6 @@ layout: default
       </article>
     {% endif %}
   </div>
-    {% include footer.html %}
+
+  {% include footer.html %}
 </main>

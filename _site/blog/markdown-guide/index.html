@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Info | Naufal Fakhri | Naufal Fakhri</title>
+  <title>Markdown Basics: A Quick Reference Guide for Jekyll | Naufal Fakhri</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" onload="this.rel='stylesheet'">
@@ -27,60 +27,163 @@
   </div>  
   <div class="nav-links">
     <a href="/projects">Projects</a>
-    <a href="/about" class="active">Info</a>
+    <a href="/about">Info</a>
     <a href="/blog">Blog</a>
   </div>
 </aside>
 
-  <main class="main-content narrow">
-  <div class="about-grid">
-    <img src="https://i.imgur.com/EeW9E6r.jpeg" alt="Profile Photo" class="profile-photo" />
-    <div class="bio-text">
-      <p>
-        Hello! I am a <strong>3D Artist &amp; Generalist</strong> focusing on hard-surface modeling, low-poly optimization for game engines, and vintage automotive/architectural reconstructions.
-      </p>
-      <p>
-        My background spans visual communication and asset production, bridging the gap between artistic detail and technical pipeline efficiency. Whether crafting complex mechanical components or modular environment kits, I focus on clean topology, optimized Texel density, and crisp PBR texturing.
-      </p>
-      <p>
-        I also document my learning journey. Check out the <a href="/blog">Blog</a> page to see why I built this portfolio and what I am practicing with GitHub Pages.
-      </p>
-    </div>
+  <main class="main-content">
+  <div class="blog-post-topbar">
+    <a href="/blog" class="btn btn-secondary">Back to Blog</a>
   </div>
 
-  <h2 class="section-title">Technical Proficiency</h2>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <h3>Modeling &amp; Sculpting</h3>
-      <ul>
-        <li>Blender</li>
-        <li>Substance 3D Painter</li>
-        <li>Hard-Surface Workflows</li>
-        <li>Subdivision Surface</li>
-      </ul>
-    </div>
+  <article class="blog-post">  
+    <header class="blog-post-header">
+      
+        <h1 class="page-title">Markdown Basics: A Quick Reference Guide for Jekyll</h1>
+      
 
-    <div class="skill-card">
-      <h3>Optimization &amp; Real-Time</h3>
-      <ul>
-        <li>Game-Ready Topology</li>
-        <li>UV Unwrapping &amp; Packing</li>
-        <li>Normal Map Baking</li>
-        <li>Unreal Engine / Unity</li>
-      </ul>
-    </div>
+      
+        <p class="blog-post-meta">
+          August 05, 2026
+           · Naufal Fakhri
+        </p>
+      
+    </header>
 
-    <div class="skill-card">
-      <h3>Design &amp; Layout</h3>
-      <ul>
-        <li>Visual Communication (DKV)</li>
-        <li>PBR Material Layering</li>
-        <li>Modular Kit Planning</li>
-        <li>Concept Visualization</li>
-      </ul>
+    <div class="blog-post-content">
+      <p>Markdown (<code class="language-plaintext highlighter-rouge">.md</code>) is a lightweight text-formatting syntax that lets you write readable content without cluttering your file with raw HTML tags. When Jekyll builds your site, it automatically parses Markdown files into clean HTML.</p>
+
+<p>Here is a quick reference guide on everything you can build using Markdown files.</p>
+
+<hr />
+
+<h2 id="1-headings">1. Headings</h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">#</code> symbols before your text to create titles and section headers.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># Heading 1 (Main Page Title - Usually handled by Front Matter)</span>
+<span class="gu">## Heading 2 (Main Section Breaks)</span>
+<span class="gu">### Heading 3 (Sub-sections)</span>
+<span class="gu">#### Heading 4 (Minor Sub-sections)</span>
+</code></pre></div></div>
+
+<h2 id="2-text-formatting">2. Text Formatting</h2>
+
+<p>Apply simple symbols around your words to style text:</p>
+
+<p><strong>Bold text</strong> for emphasis<br />
+<em>Italic text</em> for subtle highlights<br />
+<strong><em>Bold and italic</em></strong> for extra emphasis<br />
+<del>Strikethrough text</del><br />
+<code class="language-plaintext highlighter-rouge">Inline code</code> for short references like variables or commands<br /></p>
+
+<h2 id="3-well-images">3. well, images</h2>
+
+<p>you can use this format :</p>
+
+<p><code class="language-plaintext highlighter-rouge">![alt text](your-image-path.png)</code></p>
+
+<p>or this one, to prevent broken image paths when you hosted on github page:</p>
+
+<p><code class="language-plaintext highlighter-rouge">!["alt text"](/assets/images/posts/model-render.jpg)</code></p>
+
+<p>it looks like this</p>
+
+<p><img src="/image/blog/screenshot-of.webp" alt="&quot;screenshot&quot;" /></p>
+
+<h2 id="4-lists">4. Lists</h2>
+
+<p>bullet lists:</p>
+<ul>
+  <li>3D Asset Creation</li>
+  <li>Retopology &amp; UV Mapping</li>
+  <li>PBR Texturing</li>
+</ul>
+
+<p>numbered lists:</p>
+<ol>
+  <li>Export high-poly mesh from Blender</li>
+  <li>Bake maps in Substance Painter</li>
+  <li>Set up material shaders in-engine</li>
+</ol>
+
+<p>checklist:</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />High-poly modeling completed</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />UV unwrapping finished</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Final renders in Cycles</li>
+</ul>
+
+<h2 id="5-blockquotes">5. Blockquotes</h2>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">&gt;</code> character to highlight key quotes, notes or tips:</p>
+
+<blockquote>
+  <p>Documenting the creation process is just as important as presenting the final render.</p>
+</blockquote>
+
+<h2 id="6-code-blocks--syntax-highlighting">6. Code Blocks &amp; Syntax highlighting</h2>
+
+<p>To display multi-line code blocks, wrap the code with triple backticks (```). You can add the language name right after the top backticks for syntax coloring:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "assetName": "Sci-Fi Console",
+  "polygonCount": 18450,
+  "textureResolution": "4096x4096"
+}
+</code></pre></div></div>
+
+<h2 id="7-data-tables">7. Data Tables</h2>
+
+<p>Create structured spec sheets or quick comparisons using pipes <code class="language-plaintext highlighter-rouge">|</code> and dashes <code class="language-plaintext highlighter-rouge">-</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Asset Name</th>
+      <th style="text-align: center">Triangle Count</th>
+      <th style="text-align: center">Texture Maps</th>
+      <th style="text-align: right">Render Engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Classic Car Chassis</td>
+      <td style="text-align: center">48,200</td>
+      <td style="text-align: center">Albedo, Normal, Roughness</td>
+      <td style="text-align: right">Cycles</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Sci-Fi Door</td>
+      <td style="text-align: center">8,500</td>
+      <td style="text-align: center">Albedo, Normal, Metallic</td>
+      <td style="text-align: right">EEVEE</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="8-horizontal-rules">8. Horizontal Rules</h2>
+
+<p>Use three dashes — or asterisks *** on a blank line to insert a clean section divider line:</p>
+
+<p>Section finished above.</p>
+
+<hr />
+
+<p>New topic starts here.</p>
+
+<h2 id="9-links">9. Links</h2>
+
+<p><code class="language-plaintext highlighter-rouge">My portfolio url is [remtromol.site](https://remtromol.site).</code></p>
+
+<p>My portfolio url is <a href="https://remtromol.site">remtromol.site</a></p>
+
     </div>
-  </div>
-    <footer class="site-footer">
+  </article>
+
+  <footer class="site-footer">
   <div class="social-links">
     <a href="https://www.artstation.com/remtromol">ArtStation</a> &bull;
     <a href="https://github.com/remtromol">GitHub</a> &bull;
@@ -88,8 +191,7 @@
   </div>
 </footer>
 
-  </main>
-
+</main>
   <script>
   // 1. CAROUSEL FUNCTIONS
   function scrollCarousel(button, direction) {
