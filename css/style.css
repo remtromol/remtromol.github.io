@@ -328,7 +328,7 @@ a.post-item {
 
 .section-title {
   font-family: var(--font-body);
-  font-size: 1.6rem;
+  font-size: clamp(1.6rem, 5vh , 2.5rem);
   font-weight: 700;
   letter-spacing: 0.04em;
   margin: 3rem 0 1.5rem;
@@ -498,6 +498,11 @@ a.post-item {
   box-shadow: 0 5px 10px #00000050;
 }
 
+.about-grid a {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
 .profile-photo {
   width: clamp(200px, 75%, 320px);
   height: auto;
@@ -527,6 +532,7 @@ a.post-item {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+  padding: auto;
 }
 
 .skill-card {
@@ -535,16 +541,18 @@ a.post-item {
   justify-content: center;
   text-align: center;
   border: 1px solid var(--border-color);
-  padding: 1.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 24px;
   box-shadow: 0 5px 10px #00000050;
-}
+  width: clamp(300px, 35vw, 600px);
+  margin: 0.25rem auto;
+  }
 
 .skill-card h3 {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: clamp(1.1rem, 3vh , 1.5rem);
   color: var(--accent);
-  margin-bottom: 0.75rem;
+  margin: 0.75rem auto;
 }
 
 .skill-card ul {
@@ -558,7 +566,7 @@ a.post-item {
   font-size: 1.1rem;
   text-align: center;
   color: var(--text-secondary);
-  margin: 1rem 3.5rem;
+  margin: 1rem auto;
   max-width: 650px;
 }
  
@@ -850,7 +858,7 @@ img {
   justify-content: center;
 }
 
-/* ======== DESKTOP ======== */
+/* ======================================= DESKTOP ======== */
 @media (min-width: 900px) {
   .main-content {
     padding: 0.25rem 2rem;
@@ -892,6 +900,10 @@ img {
     max-height: clamp(500px, 50vh, 100%);
     margin: 0.5rem 0 0.5rem 0;
     justify-content: space-between;
+  }
+
+  .post-title {
+    margin-top: auto;
   }
 
   .post-thumbnail-wrapper {
