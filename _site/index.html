@@ -85,6 +85,7 @@
     <a href="https://github.com/remtromol">GitHub</a> &bull;
     <a href="mailto:nfahri@live.com">Email</a>
   </div>
+  <div class="copyright">© 2026 Naufal Fakhri. All rights reserved.</div>
 </footer>
 
   </main>
@@ -187,40 +188,6 @@
     });
   });
 
-  // 2. LIGHTBOX & PROTECTION FUNCTIONS
-  function openModal(imgSrc) {
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
-    modalImg.src = imgSrc;
-    modal.classList.add('open');
-  }
-
-  function closeModal() {
-    const modal = document.getElementById('imageModal');
-    modal.classList.remove('open');
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const galleryImages = document.querySelectorAll('.carousel-slide img');
-    const allImages = document.querySelectorAll('img');
-
-    galleryImages.forEach(img => {
-      img.addEventListener('click', () => openModal(img.src));
-      img.addEventListener('load', () => {
-        const wrapper = img.closest('.carousel-wrapper');
-        if (wrapper) setWrapperHeight(wrapper);
-      });
-    });
-
-    allImages.forEach(img => {
-      img.addEventListener('contextmenu', (e) => e.preventDefault());
-      img.addEventListener('dragstart', (e) => e.preventDefault());
-    });
-  });
 </script>
 
 </body>

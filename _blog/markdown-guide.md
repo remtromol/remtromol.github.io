@@ -12,12 +12,13 @@ Here is a quick reference guide on everything you can build using Markdown files
 
 ---
 
+
 ## 1. Headings
 
 Use `#` symbols before your text to create titles and section headers. 
 
-```markdown
-# Heading 1 (Main Page Title - Usually handled by Front Matter)
+```
+# Heading 1 (Main Page Title)
 ## Heading 2 (Main Section Breaks)
 ### Heading 3 (Sub-sections)
 #### Heading 4 (Minor Sub-sections)
@@ -41,7 +42,7 @@ you can use this format :
 
 or this one, to prevent broken image paths when you hosted on github page:
 
-`!["alt text"]({{ "/assets/images/posts/model-render.jpg" | relative_url }})`
+`!["model render"]({{ "/assets/images/posts/model-render.jpg" | relative_url }})`
 
 it looks like this 
 
@@ -89,9 +90,35 @@ Create structured spec sheets or quick comparisons using pipes `|` and dashes `-
 
 
 | Asset Name | Triangle Count | Texture Maps | Render Engine |
-| :--- | :---: | :---: | ---: |
+| :---: | :---: | :---: | :---: |
 | Classic Car Chassis | 48,200 | Albedo, Normal, Roughness | Cycles |
 | Sci-Fi Door | 8,500 | Albedo, Normal, Metallic | EEVEE |
+
+<br>
+In here i use my own styling(yes, you can style your table too), to match my website's styling.   
+here's my table css:
+
+```
+table {
+  table-layout: auto;
+  width: 80%;
+  margin: auto;
+  background-color: #00000026;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+thead {
+  background-color: #ffffff26;
+}
+
+th,
+td {
+  padding: 0.6em;
+  border-radius: 8px;
+}
+
+```
+
 
 ## 8. Horizontal Rules
 

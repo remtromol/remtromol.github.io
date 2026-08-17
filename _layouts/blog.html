@@ -11,7 +11,7 @@ layout: default
     Here you can follow how I build and improve this portfolio over time.
   </p>
 
-  <div class="post-list">
+  <div class="post-articles">
     {% if site.collections.blog and site.collections.blog.docs %}
       {% assign blog_posts = site.collections.blog.docs | sort: 'date' | reverse %}
     {% elsif site.blog %}

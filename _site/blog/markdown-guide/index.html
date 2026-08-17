@@ -63,10 +63,10 @@
 
 <p>Use <code class="language-plaintext highlighter-rouge">#</code> symbols before your text to create titles and section headers.</p>
 
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># Heading 1 (Main Page Title - Usually handled by Front Matter)</span>
-<span class="gu">## Heading 2 (Main Section Breaks)</span>
-<span class="gu">### Heading 3 (Sub-sections)</span>
-<span class="gu">#### Heading 4 (Minor Sub-sections)</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Heading 1 (Main Page Title)
+## Heading 2 (Main Section Breaks)
+### Heading 3 (Sub-sections)
+#### Heading 4 (Minor Sub-sections)
 </code></pre></div></div>
 
 <h2 id="2-text-formatting">2. Text Formatting</h2>
@@ -87,7 +87,7 @@
 
 <p>or this one, to prevent broken image paths when you hosted on github page:</p>
 
-<p><code class="language-plaintext highlighter-rouge">!["alt text"](/assets/images/posts/model-render.jpg)</code></p>
+<p><code class="language-plaintext highlighter-rouge">!["model render"](/assets/images/posts/model-render.jpg)</code></p>
 
 <p>it looks like this</p>
 
@@ -143,27 +143,51 @@
 <table>
   <thead>
     <tr>
-      <th style="text-align: left">Asset Name</th>
+      <th style="text-align: center">Asset Name</th>
       <th style="text-align: center">Triangle Count</th>
       <th style="text-align: center">Texture Maps</th>
-      <th style="text-align: right">Render Engine</th>
+      <th style="text-align: center">Render Engine</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left">Classic Car Chassis</td>
+      <td style="text-align: center">Classic Car Chassis</td>
       <td style="text-align: center">48,200</td>
       <td style="text-align: center">Albedo, Normal, Roughness</td>
-      <td style="text-align: right">Cycles</td>
+      <td style="text-align: center">Cycles</td>
     </tr>
     <tr>
-      <td style="text-align: left">Sci-Fi Door</td>
+      <td style="text-align: center">Sci-Fi Door</td>
       <td style="text-align: center">8,500</td>
       <td style="text-align: center">Albedo, Normal, Metallic</td>
-      <td style="text-align: right">EEVEE</td>
+      <td style="text-align: center">EEVEE</td>
     </tr>
   </tbody>
 </table>
+
+<p><br />
+In here i use my own styling(yes, you can style your table too), to match my website’s styling. <br />
+here’s my table css:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>table {
+  table-layout: auto;
+  width: 80%;
+  margin: auto;
+  background-color: #00000026;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+thead {
+  background-color: #ffffff26;
+}
+
+th,
+td {
+  padding: 0.6em;
+  border-radius: 8px;
+}
+
+</code></pre></div></div>
 
 <h2 id="8-horizontal-rules">8. Horizontal Rules</h2>
 
@@ -190,6 +214,7 @@
     <a href="https://github.com/remtromol">GitHub</a> &bull;
     <a href="mailto:nfahri@live.com">Email</a>
   </div>
+  <div class="copyright">© 2026 Naufal Fakhri. All rights reserved.</div>
 </footer>
 
 </main>
@@ -291,40 +316,6 @@
     });
   });
 
-  // 2. LIGHTBOX & PROTECTION FUNCTIONS
-  function openModal(imgSrc) {
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
-    modalImg.src = imgSrc;
-    modal.classList.add('open');
-  }
-
-  function closeModal() {
-    const modal = document.getElementById('imageModal');
-    modal.classList.remove('open');
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const galleryImages = document.querySelectorAll('.carousel-slide img');
-    const allImages = document.querySelectorAll('img');
-
-    galleryImages.forEach(img => {
-      img.addEventListener('click', () => openModal(img.src));
-      img.addEventListener('load', () => {
-        const wrapper = img.closest('.carousel-wrapper');
-        if (wrapper) setWrapperHeight(wrapper);
-      });
-    });
-
-    allImages.forEach(img => {
-      img.addEventListener('contextmenu', (e) => e.preventDefault());
-      img.addEventListener('dragstart', (e) => e.preventDefault());
-    });
-  });
 </script>
 
 </body>
