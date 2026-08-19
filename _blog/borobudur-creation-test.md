@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Borobudur Creation post test"
+title: "Borobudur Creation post test post"
 date: 2026-08-03
 author: "Naufal Fakhri"
 excerpt: "The Borobudur Project and how i finished it"
