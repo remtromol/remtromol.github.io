@@ -17,6 +17,6 @@ The first thing i usually do when 3D modeling a car is looking for the car bluep
 ---
 
 <br>
-![ford 48]({{ 'image/blog/1948forddeluxe_9.webp' | relative_url }})
+![ford 48]({{ 'image/blog/ford48addition.webp' | relative_url }})
 
-Here's the first screenshot that i took after hours of 3D modeling, I usually dont record my timelapse while im in the office.
+Here's the first screenshot that i took after an hour of 3D modeling, I usually dont record my timelapse while im in the office.
